@@ -1,0 +1,243 @@
+{
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "format": "{}",
+    "all-outputs": true,
+    "format-icons": {
+      "urgent": "",
+      "active": "",
+      "default": ""
+    },
+    "persistent-workspaces": {
+      "*": 2
+    }
+  },
+  "hyprland/window": {
+    "rewrite": {
+      ".*(Brave)": "$1 Browser",
+      "rofi.*": "Rofi"
+    },
+    "separate-outputs": true,
+    "icon": false,
+    "icon-size": 18
+  },
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 20,
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-right": "close",
+    "on-click-middle": "fullscreen",
+    "ignore-list": [
+      "Rofi",
+      ".+[Ss]team",
+      "[Ss]team.+",
+      "Offers",
+      "Preferences",
+      ""
+    ]
+  },
+  "custom/settings": {
+    "format": "",
+    "on-click": "~/dotfiles/apps/ML4W_Dotfiles_Settings-x86_64.AppImage",
+    "tooltip-format": "Settings"
+  },
+  "custom/exit": {
+    "format": "",
+    "on-click": "wlogout",
+    "on-click-right": "~/dotfiles/scripts/power-options/suspend.sh",
+    "tooltip-format": "Logout"
+  },
+  "custom/cliphist": {
+    "format": "",
+    "on-click": "sleep 0.1 && ~/dotfiles/scripts/cliphist.sh",
+    "on-click-right": "sleep 0.1 && ~/dotfiles/scripts/cliphist.sh d",
+    "on-click-middle": "sleep 0.1 && ~/dotfiles/scripts/cliphist.sh w",
+    "tooltip-format": "Clipboard History"
+  },
+  "custom/wallpaper": {
+    "format": "",
+    "on-click": "waypaper",
+    "on-click-right": "~/.config/hypr/scripts/wallpaper.sh",
+    "tooltip-format": "Choose Wallpaper"
+  },
+  "custom/waybarthemes": {
+    "format": "",
+    "on-click": "sh ~/.config/waybar/waybar.sh themes",
+    "tooltip-format": "Bar Theme"
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "tooltip": true,
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    },
+    "on-click-right": "hyprlock"
+  },
+  "custom/toggle": {
+    "format": "",
+    "on-click": "sh ~/.config/waybar/waybar.sh toggle",
+    "tooltip-format": "Toggle Bar"
+  },
+  "custom/kill": {
+    "format": "",
+    "on-click": "sh ~/.config/waybar/waybar.sh kill",
+    "tooltip-format": "Kill Bar"
+  },
+  "custom/gamemode": {
+    "format": " ",
+    "on-click": "sh ~/dotfiles/scripts/mode.sh game",
+    "on-click-right": "sh ~/dotfiles/scripts/mode.sh",
+    "tooltip-format": "Gamemode"
+  },
+  "custom/appmenuicon": {
+    "format": "",
+    "on-click": "rofi -show drun",
+    "tooltip-format": "Applications"
+  },
+  "custom/browser": {
+    "format": "",
+    "on-click": "~/dotfiles/.settings/browser",
+    "tooltip-format": "Browser"
+  },
+  "custom/filemanager": {
+    "format": "",
+    "on-click": "~/dotfiles/.settings/file-manager",
+    "on-click-right": "kitty -e yazi",
+    "tooltip-format": "File Manager"
+  },
+  "custom/terminal": {
+    "format": " ",
+    "on-click": "~/dotfiles/.settings/terminal",
+    "on-click-right": "st",
+    "tooltip-format": "Terminal"
+  },
+  "custom/steam": {
+    "format": "",
+    "on-click": "steam",
+    "tooltip-format": "Steam"
+  },
+  "tray": {
+    "icon-size": 21,
+    "spacing": 0
+  },
+  "clock": {
+    "format": "{:%H:%M - %d %b}",
+    "format-alt": "<big></big>  {:%H:%M %a  <big></big> %d %m %Y}",
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "calendar": {
+      "mode-mon-col": 3,
+      "on-scroll": 1,
+      "on-click-right": "mode",
+      "format": {
+        "weekdays": "<b><i>{}</i></b>",
+        "today": "<b>{}</b>"
+      }
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-scroll-up": "shift_down",
+      "on-scroll-down": "shift_up"
+    }
+  },
+  "hyprland/language": {
+    "format": "/ K {short}"
+  },
+  "group/settings": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 300,
+      "children-class": "settings",
+      "transition-left-to-right": false
+    },
+    "modules": [
+      "custom/settings",
+      "custom/toggle",
+      "custom/kill",
+      "custom/gamemode",
+      "custom/wallpaper",
+      "custom/waybarthemes",
+      "custom/cliphist",
+      "idle_inhibitor",
+      "custom/exit"
+    ]
+  },
+  "group/quicklinks": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 300,
+      "children-class": "quicklinks",
+      "transition-left-to-right": true
+    },
+    "modules": [
+      "custom/appmenuicon",
+      "custom/browser",
+      "custom/filemanager",
+      "custom/terminal",
+      "custom/steam"
+    ]
+  },
+  "battery": {
+    "states": {
+      "good": 90,
+      "warning": 20,
+      "critical": 10
+    },
+    "format": "<big>{icon}</big>.",
+    "format-alt": "<big>{icon}</big>  {capacity}%",
+    "format-charging": "<big></big> <big>{icon}</big>.",
+    "format-plugged": "<big></big>",
+    "full-at": "100",
+    "format-full": "",
+    "tooltip-format": "{capacity}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "pulseaudio": {
+    "reverse-scrolling": true,
+    "format": "<big>{icon}</big>",
+    "format-alt": "<big>{icon}</big>  {volume}% <big>{format_source}</big>",
+    "format-muted": "<big></big> <big>{format_source}</big>",
+    "format-bluetooth": "<big> {icon}</big>",
+    "format-bluetooth-muted": "<big> </big>",
+    "format-source": "",
+    "format-source-muted": "",
+    "format-icons": {
+      // "headphone": "",
+      // "hands-free": "",
+      // "headset": "",
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    },
+    "tooltip-format": "{desc} - {icon}  {volume}% {format_source} ",
+    "on-click-right": "pavucontrol"
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "<big>{icon}</big>",
+    "format-alt": "<big>{icon}</big> {percent}%",
+    "scroll-step": 0.1,
+    "reverse-scrolling": true,
+    "tooltip-format": "{icon} {percent}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  }
+}

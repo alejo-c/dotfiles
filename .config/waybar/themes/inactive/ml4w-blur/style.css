@@ -1,0 +1,237 @@
+/*
+ * __        __          _                  ____  _         _       
+ * \ \      / /_ _ _   _| |__   __ _ _ __  / ___|| |_ _   _| | ___  
+ *  \ \ /\ / / _` | | | | '_ \ / _` | '__| \___ \| __| | | | |/ _ \ 
+ *   \ V  V / (_| | |_| | |_) | (_| | |     ___) | |_| |_| | |  __/ 
+ *    \_/\_/ \__,_|\__, |_.__/ \__,_|_|    |____/ \__|\__, |_|\___| 
+ *                 |___/                              |___/         
+ *
+ * ----------------------------------------------------- 
+*/
+
+/* -----------------------------------------------------
+ * General 
+ * ----------------------------------------------------- */
+
+* {
+  font-family: "Fira Sans Semibold", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+  border: none;
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-size: 13.25px;
+}
+
+window#waybar {
+  background-color: rgba(0, 0, 0, 0.2);
+  transition-duration: .5s;
+  transition-property: background-color;
+}
+
+/* -----------------------------------------------------
+ * Workspaces 
+ * ----------------------------------------------------- */
+
+#workspaces {
+  margin: 2px 0;
+  padding: 0 1px;
+  border-radius: 15px;
+  border: 0;
+  font-style: normal;
+  opacity: 0.8;
+  background: @workspacesbackground1;
+  color: @textcolor1;
+}
+
+#workspaces button {
+  border: 0;
+  padding: 0 4px;
+  margin: 2px 3px;
+  border-radius: 15px;
+  transition: all 0.3s ease-in-out;
+  opacity: 0.4;
+  background-color: @workspacesbackground2;
+  color: @textcolor1;
+}
+
+#workspaces button.active {
+  padding: 0 14px;
+  transition: all 0.3s ease-in-out;
+  opacity: 1.0;
+  background: @workspacesbackground2;
+  color: @textcolor1;
+}
+
+#workspaces button:hover {
+  opacity: 0.7;
+  background: @workspacesbackground2;
+  color: @textcolor1;
+}
+
+/* -----------------------------------------------------
+ * Tooltips
+ * ----------------------------------------------------- */
+
+tooltip {
+  border-radius: 10px;
+  opacity: 0.8;
+  background-color: @backgroundlight;
+}
+
+tooltip label {
+  color: @textcolor2;
+}
+
+/* -----------------------------------------------------
+ * Window
+ * ----------------------------------------------------- */
+
+#window {
+  margin: 5px 0;
+  padding: 0 10px;
+  border-radius: 15px;
+  color: @textcolor2;
+  font-weight: normal;
+  opacity: 0.8;
+  background: @backgrounddark;
+}
+
+window#waybar.empty #window {
+  background-color: transparent;
+}
+
+/* -----------------------------------------------------
+ * Taskbar
+ * ----------------------------------------------------- */
+
+#taskbar {
+  /*margin: 5px 0px;*/
+}
+
+#taskbar button {
+  /*margin-right: 12px;*/
+}
+
+/* -----------------------------------------------------
+ * Modules
+ * ----------------------------------------------------- */
+
+.modules-left>widget:first-child>#workspaces {
+  margin-left: 0;
+}
+
+.modules-right>widget:last-child>#workspaces {
+  margin-right: 0;
+}
+
+/* -----------------------------------------------------
+ * Custom Quicklinks
+ * ----------------------------------------------------- */
+
+#custom-browser,
+#custom-terminal,
+#custom-filemanager,
+
+#custom-wallpaper,
+#custom-waybarthemes,
+#custom-cliphist,
+#idle_inhibitor,
+#custom-exit,
+#custom-settings {
+  font-size: 18px;
+  margin-right: 8px;
+  color: @iconcolor;
+}
+
+/* -----------------------------------------------------
+ * Idle Inhibator
+ * ----------------------------------------------------- */
+
+#idle_inhibitor.activated {
+  color: #dc2f2f;
+}
+
+/* -----------------------------------------------------
+ * Clock
+ * ----------------------------------------------------- */
+
+#clock {
+  border-radius: 15px;
+  padding: 0 6px;
+  margin: 5px 6px 5px 0;
+  opacity: 0.8;
+  background-color: @backgrounddark;
+  border: 3px solid @bordercolor;
+  color: @textcolor1;
+}
+
+/* -----------------------------------------------------
+ * Pulseaudio
+ * ----------------------------------------------------- */
+
+#pulseaudio {
+  border-radius: 15px;
+  padding: 0 8px;
+  margin: 5px 0 5px 6px;
+  opacity: 0.8;
+  background-color: @backgroundlight;
+  color: @textcolor2;
+}
+
+#pulseaudio.muted {
+  background-color: @backgrounddark;
+  color: @textcolor1;
+}
+
+/* -----------------------------------------------------
+ * Battery
+ * ----------------------------------------------------- */
+
+#battery {
+  border-radius: 15px;
+  padding: 0 10px;
+  margin: 5px 0;
+  opacity: 0.8;
+  background-color: @backgroundlight;
+  color: @textcolor2;
+}
+
+#battery.charging,
+#battery.plugged {
+  background-color: @backgroundlight;
+  color: @textcolor2;
+}
+
+@keyframes blink {
+  to {
+    background-color: @backgroundlight;
+    color: @textcolor2;
+  }
+}
+
+#battery.critical:not(.charging) {
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  background-color: #f53c3c;
+  color: @textcolor3;
+}
+
+/* -----------------------------------------------------
+ * Tray
+ * ----------------------------------------------------- */
+
+#tray {
+  color: @textcolor3;
+}
+
+#tray>.passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray>.needs-attention {
+  -gtk-icon-effect: highlight;
+}

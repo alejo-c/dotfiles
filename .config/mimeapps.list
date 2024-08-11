@@ -1,0 +1,19 @@
+[Added Associations]
+application/x-zerosize=neovide.desktop;
+text/plain=neovide.desktop;brave-browser.desktop;compton.desktop;nvim.desktop;
+image/png=swappy.desktop;org.gnome.eog.desktop;nsxiv.desktop;
+image/jpeg=nsxiv.desktop;org.gnome.eog.desktop;swappy.desktop;
+text/markdown=neovide.desktop;
+application/pdf=brave-browser.desktop;org.pwmt.zathura-pdf-mupdf.desktop;
+application/zip=xarchiver.desktop;
+font/woff=neovide.desktop;
+
+[Default Applications]
+image/png=nsxiv.desktop
+image/jepg=nsxiv.desktop
+application/pdf=org.pwmt.zathura-pdf-mupdf.desktop
+all/allfiles=neovide.desktop
+; text/markdown=neovide.desktop;
+; text/plain=neovide.desktop;brave-browser.desktop;compton.desktop;nvim.desktop;
+; application/x-zerosize=neovide.desktop;
+image/jpeg=nsxiv.desktop

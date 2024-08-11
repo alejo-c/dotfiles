@@ -1,0 +1,36 @@
+{
+    "label" : "lock",
+    "action" : "$HOME/dotfiles/scripts/power-options/lock.sh",
+    "text" : "Lock",
+    "keybind" : "l"
+}
+{
+    "label" : "hibernate",
+    "action" : "sleep 1; systemctl hibernate",
+    "text" : "Hibernate",
+    "keybind" : "h"
+}
+{
+    "label" : "logout",
+    "action" : "$HOME/dotfiles/scripts/power-options/logout.sh",
+    "text" : "Exit",
+    "keybind" : "e"
+}
+{
+    "label" : "shutdown",
+    "action" : "$HOME/dotfiles/scripts/power-options/shutdown.sh",
+    "text" : "Shutdown",
+    "keybind" : "s"
+}
+{
+    "label" : "suspend",
+    "action" : "$HOME/dotfiles/scripts/power-options/suspend.sh",
+    "text" : "Suspend",
+    "keybind" : "u"
+}
+{
+    "label" : "reboot",
+    "action" : "$HOME/dotfiles/scripts/power-options/reboot.sh",
+    "text" : "Reboot",
+    "keybind" : "r"
+}

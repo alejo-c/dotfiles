@@ -1,0 +1,5 @@
+\.git
+scripts
+apps
+\.settings
+\.stow-global-ignore

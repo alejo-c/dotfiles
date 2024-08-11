@@ -1,0 +1,116 @@
+/*
+#  ____        __ _  
+# |  _ \ ___  / _(_) 
+# | |_) / _ \| |_| | 
+# |  _ < (_) |  _| | 
+# |_| \_\___/|_| |_| 
+#
+# ----------------------------------------------------- 
+*/
+
+/* ---- Configuration ---- */
+configuration {
+  font:                       "Fira Sans";
+	hover-select:               true;
+  me-select-entry:            "";
+  me-accept-entry:            "MousePrimary";
+}
+
+/* ---- Load font ---- */
+@import "~/dotfiles/.settings/rofi-font.rasi"
+
+/* ---- Load pywal colors (custom wal template) ---- */
+@import "~/.cache/wal/colors-rofi-pywal"
+
+/* ---- Load border width ---- */
+@import "~/dotfiles/.settings/rofi-border.rasi"
+
+window {
+    width:                        250px;
+    x-offset:                     0px;
+    y-offset:                     0px;
+    spacing:                      0px;
+    padding:                      0px;
+    margin:                       0px; 
+    color:                        #FFFFFF;
+    border:                       @border-width;
+    border-color:                 #FFFFFF;
+    location:                     center;
+    anchor:                       center;
+    fullscreen:                   false;
+    enabled:                      true;
+    border-radius:                10px;
+}
+
+mainbox {
+    orientation:                  horizontal;
+    spacing:                      0px;
+    margin:                       0px;
+    background-color:             @background;
+    children:                     ["listview"];
+}
+
+listview {
+    enabled:                      true;
+    cycle:                        true;
+    dynamic:                      true;
+    scrollbar:                    false;
+    layout:                       vertical;
+    reverse:                      false;
+    fixed-height:                 true;
+    fixed-columns:                true;
+    spacing:                      0px;
+    padding:                      10px;
+    margin:                       0px;
+    background-color:             @background;
+    border:0px;
+}
+
+element {
+    enabled:                      true;
+    padding:                      10px;
+    margin:                       5px;
+    cursor:                       pointer;
+    background-color:             @background;
+    border-radius:                10px;
+    border:                       @border-width;
+}
+
+element normal.normal {
+    background-color:            inherit;
+    text-color:                  @foreground;
+}
+
+element normal.active {
+    background-color:            inherit;
+    text-color:                  @foreground;
+}
+
+element selected.normal {
+    background-color:            @color11;
+    text-color:                  @foreground;
+}
+
+element selected.active {
+    background-color:            inherit;
+    text-color:                  @foreground;
+}
+
+element alternate.normal {
+    background-color:            inherit;
+    text-color:                  @foreground;
+}
+
+element alternate.active {
+    background-color:            inherit;
+    text-color:                  @foreground;
+}
+
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+}
+

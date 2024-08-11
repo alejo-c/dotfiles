@@ -1,0 +1,80 @@
+[user]
+	email = 4lejo.castrillon@gmail.com
+	name = alejo-c
+[advice]
+	detachedHead = false
+[alias]
+# Add
+	a = add
+	aa = add -A
+	ap = add -p
+	r = reset
+	re = restore
+	rep = re -p
+# Branch
+	b = branch
+	ba = branch --all
+	bd = branch -d
+	bD = branch -D
+	bm = branch -m
+	c = checkout
+	cb = checkout -b
+	cm = c main
+	cd = c develop
+	m = merge
+	mm = m main
+	md = m develop
+# Commit
+	co = commit
+	cv = commit -v
+	ac = co -a # Add and Commit
+	mc = co -m # Messaged Commit
+	amc = ac -m # Add and Commit with message
+	aamc = aa && mc # Add all and Messaged Commit
+	ca = co --amend # Commit with Amend
+	cam = ca -m # Commit with Amend and message
+	can = ca --no-edit # Commit with Amend without edit
+	aca = ac --amend # Add all tracked files in
+	acam = aca -m # Add all tracked files to last commit with message
+	acan = aca --no-edit # Add all tracked files to last commit without edit
+	undo = r HEAD~ # Undo last commit
+	continue = co -c ORIG_HEAD # Continue message last commit
+# Status
+	s = status --show-stash # Show status and stash
+	ss = status -s # Shou short status
+	d = diff
+# Config
+	cn = config --global user.name
+	ce = config --global user.email
+	cl = config --global --list # List global configurations
+	rao = remote add origin
+# Stash
+	st = stash
+	sp = stash -p
+	sm = stash -m
+	spm = stash -pm
+	sl = stash list
+	so = stash pop
+# Log
+	l = log --oneline
+	lg = log --oneline --graph
+	lag = log --oneline --all --graph
+	last = log -1 HEAD --stat # Show last commit in current branch
+# Push
+	p = push
+	pa = push --all
+	pd = push origin --delete
+	pu = pull
+  pr = pull --rebase
+[core]
+	safecrlf = false
+	whitespace = trailing-space,space-before-tab
+	fsmonitor = false
+	editor = nvim
+	symlinks = true
+[apply]
+	whitespace = fix
+[init]
+	defaultBranch = main
+[credential]
+	helper = cache

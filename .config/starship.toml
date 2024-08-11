@@ -1,0 +1,79 @@
+[character]
+format = "$symbol "
+success_symbol = "[❯](bold green)"
+error_symbol = "[✖](bold red)"
+vimcmd_symbol = "[❮](bold green)"
+
+[git_commit]
+tag_symbol = " tag "
+
+[git_status]
+ahead = ">"
+behind = "<"
+diverged = "<>"
+renamed = "r"
+deleted = "x"
+
+[bun]
+symbol = "bun "
+version_format = ""
+
+[c]
+symbol = "C "
+version_format = ""
+
+[cmake]
+symbol = "cmake "
+
+[directory]
+read_only = " ro"
+
+[docker_context]
+symbol = "docker "
+
+[git_branch]
+symbol = " "
+
+[golang]
+symbol = "go "
+version_format = ""
+
+[java]
+symbol = "java "
+version_format = ""
+
+[lua]
+symbol = "lua "
+version_format = ""
+
+[nodejs]
+symbol = "nodejs "
+version_format = ""
+
+[memory_usage]
+symbol = "memory "
+
+[meson]
+symbol = "meson "
+
+[os.symbols]
+Arch = " "
+Linux = " "
+
+[package]
+disabled = true
+
+[php]
+symbol = "php "
+version_format = ""
+
+[python]
+symbol = " python "
+version_format = ""
+
+[rust]
+symbol = " "
+version_format = ""
+
+[sudo]
+symbol = "sudo "
