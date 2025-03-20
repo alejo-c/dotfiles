@@ -1,0 +1,115 @@
+#!/bin/bash
+
+yy() {
+  local tmp
+  tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+  yazi "$@" --cwd-file="$tmp"
+  if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+    z "$cwd"
+  fi
+  rm -f -- "$tmp"
+}
+
+f() {
+  fzf --delimiter : \
+    --layout reverse \
+    --preview 'bat --color=always {}' \
+    --preview-window 'hidden,60%' \
+    --bind 'ctrl-f:change-preview-window(down|hidden)' \
+    --bind 'ctrl-b:change-preview-window(right|left)' \
+    --color=16 \
+	--multi
+}
+
+fz() {
+  fzf --delimiter : \
+    --layout reverse \
+    --preview 'tree -C {}' \
+    --preview-window 'hidden,60%' \
+    --bind 'ctrl-f:change-preview-window(down|hidden)' \
+    --bind 'ctrl-b:change-preview-window(right|left)' \
+    --color=16 \
+	--multi
+}
+
+rr() {
+  rg --line-number "${*:-}" |
+    fzf --ansi \
+      --delimiter : \
+      --layout reverse \
+      --preview 'bat --color=always {1} --highlight-line {2}' \
+      --preview-window 'hidden,60%,+{2}+3/3,~3' \
+      --bind 'enter:become(vi {1} +{2})' \
+      --bind 'ctrl-f:change-preview-window(down|hidden)' \
+      --color=16 \
+	  --multi
+}
+
+rrr() {
+  rg --line-number "${*:-}" |
+    fzf --ansi \
+      --delimiter : \
+      --layout reverse \
+      --preview 'bat --color=always {1} --highlight-line {2}' \
+      --preview-window 'hidden,60%,+{2}+3/3,~3' \
+      --bind 'enter:become(vv {1} +{2})' \
+      --bind 'ctrl-f:change-preview-window(down|hidden)' \
+      --color=16 \
+	  --multi
+}
+
+v() {
+  [[ -n "$@" ]] && \
+    files=$(echo "$@" | tr ' ' '\n') || \
+    files=$(fd -t f -H | sort | f)
+
+  files=$(echo "$files" | awk 'system("[ -e " $0 " ] && echo " $0 " || echo no")' | grep -v ^no$ | tr '\n' ' ' | xargs)
+
+  [[ -z "$files" ]] && return
+  vim $files
+  realpath $files | awk '{system("echo " $0 "| wl-copy")}'
+}
+
+vv() {
+  [[ -n "$@" ]] && \
+    files=$(echo "$@" | tr ' ' '\n') || \
+    files=$(fd -t f -H | sort | f)
+
+  files=$(echo "$files" | awk 'system("[ -e " $0 " ] && echo " $0 " || echo no")' | grep -v ^no$ | tr '\n' ' ' | xargs)
+
+  [ -z "$files" ] && return
+  vvv $files
+  realpath $files | awk '{system("echo " $0 "| wl-copy")}'
+}
+
+zz() {
+  dir=$(fd -t d -H | fz)
+  [ -d "$dir" ] && z "$dir"
+  readpath "$dir"
+}
+
+# FZF
+
+_fzf_compgen_path() {
+  fd -p '/' -t f -H "$1"
+}
+
+_fzf_compgen_dir() {
+  fd -p '/' -t d -H "$1"
+}
+
+_fzf_complete_nsxiv() {
+  _fzf_complete --multi --reverse --prompt="nsxiv> " -- "$@" < <(
+    ls -la
+  )
+}
+
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+  cd) fz ;;
+  *) f ;;
+  esac
+}

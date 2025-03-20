@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# EZA
+alias l='eza --icons'
+alias la='l -a'
+alias ll='l -lh'
+alias lt='l -TL'
+alias lla='ll -a'
+alias lta='l -aTL'
+alias llt='l -lTL'
+alias llta='l -alTL'
+
+alias e='exit'
+alias cp='cp -iv'
+alias grep='grep --color=auto'
+alias mv='mv -iv'
+alias rm='trash'
+alias ff='fastfetch'
+alias r='source /home/alejo/.bashrc' 
+alias wall='/home/alejo/dotfiles/scripts/wallpaper'
+alias ..='z ..'
