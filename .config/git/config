@@ -61,6 +61,7 @@
 	lag = log --oneline --all --graph
 	last = log -1 HEAD --stat # Show last commit in current branch
 # Push
+  pom = push -u origin main
 	p = push
 	pa = push --all
 	pd = push origin --delete

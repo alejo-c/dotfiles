@@ -1,0 +1,76 @@
+.anydesk
+.cache/BraveSoftware
+.cache/cava
+.cache/fontconfig
+.cache/g-ir-scanner
+.cache/gtk-4.0/
+.cache/kitty
+.cache/mesa_shader_cache
+.cache/mesa_shader_cache_db
+.cache/mpv
+.cache/npm
+.cache/nvim
+.cache/oh-my-posh
+.cache/paru
+.cache/pip
+.cache/qtshadercache*
+.cache/sddm-greeter
+.cache/tealdeer
+.cache/thumbnails
+.cache/thumnails
+.cache/tracker3
+.cache/ueberzugpp
+.cache/vim
+.cache/vim/swap
+.cache/wal/schemes
+.cache/yt-dlp
+.cache/zen
+code/rust/100*
+.config/BraveSoftware
+.config/cargo
+.config/cef_user_data
+.config/java
+.config/npm
+.config/nvm
+.config/pulse
+.config/rustup
+.config/UNDERTALE
+.config/unity3d
+dist/
+documents/services
+.git/
+*inactive*
+.local/share/3909
+.local/share/gnupg
+.local/share/gvfs-metadata
+.local/share/HotlineMiami2
+.local/share/hyprpm
+.local/share/icons
+.local/share/mime
+.local/share/nvim
+.local/share/onlyoffice
+.local/share/qalculate
+.local/share/Steam
+.local/share/SuperHexagon
+.local/share/Terraria
+.local/share/Trash
+.local/share/vulkan
+.local/state/nvim
+node_modules/
+private
+*__pycache__*
+.steam
+*target*
+.zen
+# *.avi
+# *.avif
+# *.gif
+# *.jpeg
+# *.jpg
+# *.mov
+# *.mp4
+# *.ogg
+# *.png
+# *.svg
+# *.webm
+# *.webp
