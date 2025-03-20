@@ -1,2 +1,5 @@
-pgrep kwalletd6 || kwalletd6 && brave &
+#!/bin/bash
+
+#pgrep kwalletd6 || kwalletd6 && brave &
+zen-browser
 exit
