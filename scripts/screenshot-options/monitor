@@ -1,0 +1,12 @@
+#!/bin/bash
+
+dir="$HOME/pictures/screenshots"
+name="monitor_$(date +%d-%m-%Y_%H:%M:%S).png"
+
+monitor=$(hyprctl activeworkspace | grep -Po '(?<=monitor )[^:]+')
+grim -o "$monitor" "$dir/$name"
+[ ! -f "$dir/$name" ] && exit
+
+notify-send 'Fullscreen Screenshot' "Saved as $name"
+wl-copy < "$dir/$name"
+swappy -f "$dir/$name"

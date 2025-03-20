@@ -1,0 +1,13 @@
+#!/bin/bash
+
+dir="$HOME/pictures/screenshots"
+name="region_$(date +%d-%m-%Y_%H:%M:%S).png"
+area=$(slurp)
+
+grim -g "$area" "$dir/$name"
+[ ! -f "$dir/$name" ] && exit
+
+notify-send 'Region Screenshot' "Saved as $name"
+
+wl-copy < "$dir/$name"
+swappy -f "$dir/$name"
