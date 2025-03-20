@@ -13,7 +13,6 @@
 killall waybar
 pkill waybar
 
-sleep 0.3
 # Check if waybar-disabled file exists
 [ -f "$HOME"/.cache/waybar-disabled ] && exit 1
 
