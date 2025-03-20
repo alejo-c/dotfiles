@@ -1,10 +1,9 @@
-#!/bin/lisp
 (defsrc
   caps
 )
 
 (defalias
-  escctrl (tap-hold 100 100 esc lctrl)
+  escctrl (tap-hold 125 125 esc lctrl)
 )
 
 (deflayer base
