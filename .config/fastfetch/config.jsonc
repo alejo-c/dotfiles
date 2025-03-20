@@ -15,11 +15,7 @@
     }
   },
   "display": {
-    "separator": " ",
-    //   "key": {
-    //     "type": "string",
-    //     "width": 3
-    //   }
+    "separator": " "
   },
   "modules": [
     "title",
