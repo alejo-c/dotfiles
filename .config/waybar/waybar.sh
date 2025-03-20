@@ -1,6 +1,6 @@
 #!/bin/bash
 
-case "$1" in
+case $1 in
 toggle) killall -SIGUSR1 waybar ;;
 reload) killall -SIGUSR2 waybar ;;
 kill) killall -9 waybar ;;
