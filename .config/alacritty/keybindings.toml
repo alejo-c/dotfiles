@@ -1,0 +1,15 @@
+[keyboard]
+bindings = [
+  { key = 'N', mods = 'Alt', action = 'CreateNewWindow' },
+  { key = 'P', mods = 'Alt', action = 'Paste' },
+  { key = 'Y', mods = 'Alt', action = 'Copy' },
+  { key = 'Space', mods = 'Alt', action = 'ToggleViMode' },
+  { key = 'K', mods = 'Alt', action = 'ScrollToTop' },
+  { key = 'J', mods = 'Alt', action = 'ScrollToBottom' },
+  { key = '7', mods = 'Alt', action = 'SearchForward' },
+  { key = "'", mods = 'Alt', action = 'SearchBackward' },
+  { key = 'O', mods = 'Alt', mode = 'Vi', action = 'Open' },
+  { key = 'R', mods = 'Alt', action = 'ClearLogNotice' },
+  { key = '{', mods = 'Alt', command = { program = 'alacritty', args = ['-e', 'sh', '/home/alejo/dotfiles/scripts/terminal-opacity', '-'] } },
+  { key = '}', mods = 'Alt', command = { program = 'alacritty', args = ['-e', 'sh', '/home/alejo/dotfiles/scripts/terminal-opacity', '+'] } },
+]

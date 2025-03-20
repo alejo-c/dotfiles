@@ -11,8 +11,9 @@
 [[ $- != *i* ]] && return
 
 set -o vi
+PROMPT_COMMAND='echo -en "\033]0;Terminal $(dirs +0) \a"'
 
-for file in aliases functions env-variables executables; do
-  file=~/dotfiles/scripts/bash/$file.sh
+for file in aliases functions executables; do
+  file=/home/alejo/dotfiles/scripts/bash/$file
   if [ -f "$file" ]; then source "$file"; fi
 done
