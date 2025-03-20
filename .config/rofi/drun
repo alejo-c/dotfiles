@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# rofi -i -replace -show drun -config ~/.config/rofi/config.rasi -config ~/.config/rofi/config-dmenu.rasi
+rofi -i -replace -display-drun " " -show drun -config ~/.config/rofi/dmenu.rasi

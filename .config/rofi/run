@@ -1,0 +1,7 @@
+#!/bin/bash
+
+config_file=~/.config/rofi/run.rasi
+prompt=$(rofi -dmenu -p "$1" -i -replace -config $config_file)
+
+output=$(bash -c "$prompt" 2>/dev/null)
+[ "$output" != "" ] && rofi -config $config_file -e "$output"

@@ -16,13 +16,8 @@ configuration {
   me-accept-entry:            "MousePrimary";
 }
 
-/* ---- Load font ---- */
 @import "~/dotfiles/.settings/rofi-font.rasi"
-
-/* ---- Load pywal colors (custom wal template) ---- */
-@import "~/.cache/wal/colors-rofi-pywal"
-
-/* ---- Load border width ---- */
+@import "~/.cache/wal/rofi.rasi"
 @import "~/dotfiles/.settings/rofi-border.rasi"
 
 window {

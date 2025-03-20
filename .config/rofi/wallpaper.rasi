@@ -4,33 +4,23 @@
 # | |_) / _ \| |_| | 
 # |  _ < (_) |  _| | 
 # |_| \_\___/|_| |_| 
-#                    
-#
 # ----------------------------------------------------- 
 */
 
-/* ---- Configuration ---- */
 configuration {
     font:                       "Fira Sans 11";
     show-icons:                 true;
-	  hover-select:               true;
+	hover-select:               true;
     me-select-entry:            "";
     me-accept-entry:            "MousePrimary";
     drun-display-format:        "{name}";
     window-format:              "{w} · {c} · {t}";
-    
 }
 
-/* ---- Load font ---- */
 @import "~/dotfiles/.settings/rofi-font.rasi"
-
-/* ---- Load pywal colors (custom wal template) ---- */
-@import "~/.cache/wal/colors-rofi-pywal.rasi"
-
-/* ---- Load border width ---- */
+@import "~/.cache/wal/rofi.rasi"
 @import "~/dotfiles/.settings/rofi-border.rasi"
 
-/* ---- Window ---- */
 window {
     width:                        760px;
     x-offset:                     0px;
@@ -51,7 +41,6 @@ window {
     background-color:             transparent;
 }
 
-/* ---- Mainbox ---- */
 mainbox {
     enabled:                      true;
     orientation:                  horizontal;
@@ -61,14 +50,12 @@ mainbox {
     children:                     ["listbox"];
 }
 
-/* ---- Listbox ---- */
 listbox {
     background-color:            transparent;
     orientation:                 vertical;
     children:                    [ "inputbar", "listview" ];
 }
 
-/* ---- Inputbar ---- */
 inputbar {
     enabled:                      true;
     text-color:                   @foreground;
@@ -102,7 +89,6 @@ button selected {
     text-color:                   @foreground;
 }
 
-/* ---- Listview ---- */
 listview {
     enabled:                      true;
     columns:                      6;
@@ -121,7 +107,6 @@ listview {
     border:                       0px;
 }
 
-/* ---- Element ---- */
 element {
     enabled:                      true;
     padding:                      0px;
@@ -203,7 +188,6 @@ element-text {
     enabled: false;
 }
 
-/*****----- Message -----*****/
 message {
     background-color:            transparent;
     border:0px;

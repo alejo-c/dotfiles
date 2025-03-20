@@ -1,0 +1,122 @@
+/*
+ ____        __ _  
+|  _ \ ___  / _(_) 
+| |_) / _ \| |_| | 
+|  _ < (_) |  _| | 
+|_| \_\___/|_| |_| 
+*/
+
+configuration {
+	  hover-select:               true;
+    me-select-entry:            "";
+    me-accept-entry:            "MousePrimary";
+    drun-display-format:        "{name}";
+}
+
+@import "~/dotfiles/.settings/rofi-font.rasi"
+@import "~/.cache/wal/rofi.rasi"
+@import "~/dotfiles/.settings/rofi-border.rasi"
+
+window {
+    width:                        250px;
+    x-offset:                     -5;
+    y-offset:                     5;
+    padding:                      0;
+    border:                       @border-width;
+    border-color:                 @color12;
+    location:                     northeast;
+    anchor:                       northeast;
+    background-color:             @background;
+}
+
+mainbox {
+    margin:                       0;
+    background-color:           @background;
+    children:                     ["listbox"];
+}
+
+listbox {
+    children:                    [ "listview" ];
+}
+
+button {
+    background-color:             @background;
+    text-color:                   inherit;
+    cursor:                       pointer;
+    border:                       0px;
+}
+
+button selected {
+    background-color:             @color11;
+    text-color:                   @foreground;
+}
+
+listview {
+    layout: vertical;
+    scrollbar:                    false;
+    spacing:                      0;
+    padding:                      5;
+    margin:                       0;
+    background-color:             transparent;
+    border:0px;
+    lines: 2;
+}
+
+/* ---- Element ---- */
+element {
+    enabled:                      true;
+    padding:                      4;
+    margin:                       2;
+    background-color:             @background;
+    border-radius:                10px;
+}
+
+element normal.normal {
+    background-color:            inherit;
+    text-color:                  @foreground;
+}
+
+element normal.urgent {
+    background-color:            inherit;
+    text-color:                  @foreground;
+}
+
+element normal.active {
+    background-color:            inherit;
+    text-color:                  @foreground;
+}
+
+element selected.normal {
+    background-color:            @color11;
+    text-color:                  @foreground;
+}
+
+element selected.urgent {
+    background-color:            inherit;
+    text-color:                  @foreground;
+}
+
+element selected.active {
+    background-color:            inherit;
+    text-color:                  @foreground;
+}
+
+element alternate.normal {
+    background-color:            inherit;
+    text-color:                  @foreground;
+}
+
+element alternate.urgent {
+    background-color:            inherit;
+    text-color:                  @foreground;
+}
+
+element alternate.active {
+    background-color:            inherit;
+    text-color:                  @foreground;
+}
+
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+}

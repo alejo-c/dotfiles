@@ -1,0 +1,101 @@
+configuration {
+	hover-select:               true;
+  me-select-entry:            "";
+  me-accept-entry:            "MousePrimary";
+}
+
+@import "~/dotfiles/.settings/rofi-font.rasi"
+@import "~/.cache/wal/rofi.rasi"
+@import "~/dotfiles/.settings/rofi-border.rasi"
+
+window {
+    width:                        400;
+    x-offset:                     -5;
+    y-offset:                     5;
+    padding:                      0;
+    border:                       @border-width;
+    border-color:                 @color14;
+    location:                     northeast;
+    //anchor:                       northeast;
+    background-color:             @background;
+}
+
+mainbox {
+    spacing:                      0;
+    children:                     ["inputbar", "listview"];
+    background-color:             @background;
+}
+
+inputbar {
+    text-color:                   @foreground;
+    padding:                      5;
+    children:                     [ "textbox-prompt-colon", "entry" ];
+}
+
+textbox-prompt-colon {
+    padding:                      0 4 0 0;
+    str:                          "";
+    background-color:             transparent;
+    text-color:                   inherit;
+}
+
+entry {
+    background-color:             transparent;
+    text-color:                   inherit;
+    cursor:                       text;
+    placeholder:                  "Search";
+    placeholder-color:            inherit;
+}
+
+listview {
+    lines:                        8;
+    cycle:                        true;
+    dynamic:                      true;
+    padding:                      3;
+    margin:                       1;
+    border:                       0;
+}
+
+/* ---- Element ---- */
+element {
+    enabled:                      true;
+    padding:                      3;
+    margin:                       2;
+    cursor:                       pointer;
+    border-radius:                6;
+}
+
+element normal.normal {
+    background-color:            inherit;
+    text-color:                  @foreground;
+}
+
+element normal.urgent {
+    background-color:            inherit;
+    text-color:                  @foreground;
+}
+
+element normal.active {
+    background-color:            inherit;
+    text-color:                  @foreground;
+}
+
+element selected.normal {
+    background-color:            @color11;
+    text-color:                  @foreground;
+}
+
+element selected.urgent {
+    background-color:            inherit;
+    text-color:                  @foreground;
+}
+
+element selected.active {
+    background-color:            inherit;
+    text-color:                  @foreground;
+}
+
+element alternate.normal {
+    background-color:            inherit;
+    text-color:                  @foreground;
+}

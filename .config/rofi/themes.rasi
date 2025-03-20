@@ -8,7 +8,6 @@
 # ----------------------------------------------------- 
 */
 
-/* ---- Configuration ---- */
 configuration {
     font:                       "Fira Sans 11";
     display-filebrowser:        "FILES";
@@ -18,16 +17,10 @@ configuration {
     drun-display-format:        "{name}";
 }
 
-/* ---- Load font ---- */
 @import "~/dotfiles/.settings/rofi-font.rasi"
-
-/* ---- Load pywal colors (custom wal template) ---- */
-@import "~/.cache/wal/colors-rofi-pywal"
-
-/* ---- Load border width ---- */
+@import "~/.cache/wal/rofi.rasi"
 @import "~/dotfiles/.settings/rofi-border.rasi"
 
-/* ---- Window ---- */
 window {
     width:                        200px;
     x-offset:                     0px;
@@ -48,7 +41,6 @@ window {
     background-color:             transparent;
 }
 
-/* ---- Mainbox ---- */
 mainbox {
     enabled:                      true;
     orientation:                  horizontal;
@@ -58,7 +50,6 @@ mainbox {
     children:                     ["listbox"];
 }
 
-/* ---- Listbox ---- */
 listbox {
     spacing:                     20px;
     background-color:            transparent;
@@ -66,7 +57,6 @@ listbox {
     /*children:                    [ "inputbar", "message", "listview" ];*/
     children:                    [ "listview" ];
 }
-/* ---- Inputbar ---- */
 inputbar {
     enabled:                      true;
     text-color:                   @foreground;
@@ -110,7 +100,6 @@ button selected {
     text-color:                   @foreground;
 }
 
-/* ---- Listview ---- */
 listview {
     enabled:                      true;
     columns:                      1;
@@ -129,7 +118,6 @@ listview {
     border:0px;
 }
 
-/* ---- Element ---- */
 element {
     enabled:                      true;
     padding:                      10px;
@@ -200,7 +188,6 @@ element-text {
     horizontal-align:            0.0;
 }
 
-/*****----- Message -----*****/
 message {
     background-color:            transparent;
     border:0px;

@@ -1,0 +1,44 @@
+@import "~/.cache/wal/rofi.rasi"
+
+* {
+  text-color: @foreground;
+}
+
+configuration { font: "FiraCode Nerd Font 12"; }
+
+window {
+  location: north;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+mainbox {
+  orientation: horizontal;
+  children: [ textbox-prompt-colon, entry ];
+  margin: 0;
+  padding: 4;
+  border: 0;
+}
+
+textbox-prompt-colon {
+  str: "";
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+entry {
+  expand: true;
+  placeholder: "";
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+error-message {
+  margin: 0;
+  padding: 4;
+  border: 0;
+}

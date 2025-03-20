@@ -1,0 +1,100 @@
+@import "~/.cache/wal/rofi.rasi"
+
+* {
+  text-color: @foreground;
+}
+
+configuration {
+  font: "FiraCode Nerd Font 12";
+  terminal: "alacritty";
+  modi: "drun,calc,window";
+  show-icons: true;
+  drun-display-format: "{name}";
+  hover-select: true;
+  me-select-entry: "";
+  me-accept-entry: "MousePrimary";
+  text-color: @foreground;
+}
+
+window {
+  location: north;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  text-color: @foreground;
+}
+
+mainbox {
+  orientation: horizontal;
+  children: [inputbar, listview];
+  margin: 0;
+  padding: 4;
+  border: 0;
+  text-color: @foreground;
+}
+
+inputbar {
+  children: [prompt, entry, textbox-prompt-colon];
+}
+
+entry {
+  expand: false;
+  width: 7em;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+listview {
+  layout: horizontal;
+  border: 0;
+  scrollbar: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+error-message {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+element {
+  enabled: true;
+  margin: 0;
+  padding: 0 2;
+  border: 0;
+}
+
+element-text {
+  margin: 0;
+  padding: 0 2;
+  border: 0;
+}
+
+element normal.normal {
+    background-color:           inherit;
+}
+
+element normal.active {
+    background-color:           inherit;
+}
+
+element selected.normal {
+    background-color:           @color11;
+    text-color: @color0;
+}
+
+element selected.active {
+    background-color:           inherit;
+}
+
+element alternate.normal {
+    background-color:           inherit;
+}
+
+element alternate.active {
+    background-color:           inherit;
+}
