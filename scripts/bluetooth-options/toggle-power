@@ -1,0 +1,10 @@
+#!/bin/bash
+
+is_off=$(bluetooth | grep "off")
+if [[ -n "$is_off" ]]; then
+  bluetooth on
+  bluetoothctl power on
+else
+  bluetooth off
+  bluetoothctl power off
+fi
