@@ -1,0 +1,6 @@
+#!/bin/bash
+
+path=/home/alejo/dotfiles/scripts
+printf "#!/bin/bash\n" >"$path/$1"
+mkexec "$path/$1"
+vim "$path/$1"

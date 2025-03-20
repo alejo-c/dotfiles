@@ -1,0 +1,20 @@
+#!/bin/bash
+
+#options=" Area\n Fullscreen\n Window"
+options_path=~/dotfiles/scripts/screenshot-options
+
+case ${1,,} in
+region) $options_path/region ;;
+monitor) $options_path/monitor ;;
+window) $options_path/window ;;
+*)
+  region_option="Region\0icon\x1fregion"
+  monitor_option="Monitor\0icon\x1fview-fullscreen-symbolic"
+  window_option="Window\0icon\x1fwindow"
+  options="$region_option\n$monitor_option\n$window_option"
+
+  choice=$(dmenu " Screenshot mode: " "$options")
+  [ "$choice" = "" ] && exit
+  sh "$0" "$choice"
+  ;;
+esac

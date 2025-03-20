@@ -1,0 +1,8 @@
+#!/bin/bash
+
+image=$(dmenu "Icon: ")
+nsxiv -t $(fd "$image" -p /usr/share/icons/Papirus -p /usr/share/icons/Papirus-Dark)
+
+#icons=$(cat ~/code/tests/icons | awk '{printf "%s\\0icon\\x1f%s\n", $0, $0}')
+#dmenu "Icons" "$icons"
+

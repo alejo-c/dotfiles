@@ -1,0 +1,3 @@
+#!/bin/bash
+
+echo -e "${@:2}" | rofi -dmenu -p "$1" -i -replace -config ~/.config/rofi/dmenu.rasi

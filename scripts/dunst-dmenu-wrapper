@@ -1,0 +1,12 @@
+#!/bin/bash
+
+input=$(cat)
+
+options=$(echo "$input" | sed -n 's/^#\([^ ]*\).*/\1/p')
+
+selected=$(echo "$options" | rofi -dmenu -i -replace -p Dunst: -config ~/.config/rofi/config-dmenu.rasi)
+
+action=$(echo "$input" | grep "$selected" | sed -n 's/.*,\(.*\)\]/\1/p')
+
+notify-send "$action"
+echo "$action"

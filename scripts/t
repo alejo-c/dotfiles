@@ -1,0 +1,3 @@
+#!/bin/bash
+
+tree --metafirst --dirsfirst -C -L

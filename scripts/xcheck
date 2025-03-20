@@ -1,0 +1,2 @@
+#!/bin/bash
+x -Sy && x -Qqu | column -x | less +X

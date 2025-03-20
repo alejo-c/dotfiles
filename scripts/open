@@ -1,0 +1,4 @@
+#!/bin/bash
+
+[ -z "$@" ] && input=$(cat) || input="$@" 
+xdg-open "$input"

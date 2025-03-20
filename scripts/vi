@@ -1,0 +1,8 @@
+#!/bin/bash
+
+files=$(fd -H | sort)
+file=$(dmenu " Vim: " "$files")
+
+[[ -z "$file" ]] && exit
+alacritty -e vim "$file"
+

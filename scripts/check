@@ -1,0 +1,3 @@
+#!/bin/bash
+sudo pacman -Sy
+pacman -Qqu | column -x | less +X

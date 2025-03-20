@@ -1,0 +1,9 @@
+#!/bin/bash
+
+#if [[ -n "$1" ]]; then
+#  input=$(<"$1") # Read from the provided file
+#else
+#  input=$(cat) # Read from standard input
+#fi
+
+~/.local/share/nvim/mason/packages/xmlformatter/venv/bin/xmlformat "$1"

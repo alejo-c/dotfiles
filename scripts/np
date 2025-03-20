@@ -1,0 +1,5 @@
+#!/bin/bash
+
+path=/home/alejo/documents/private
+vim "$path/$1"
+sudo chmod 000 "$path/$1"

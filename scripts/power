@@ -1,0 +1,9 @@
+#!/bin/bash
+
+case "$1" in
+l) sh ~/dotfiles/scripts/power-options/lock ;;
+e) sh ~/dotfiles/scripts/power-options/logout ;;
+r) sh ~/dotfiles/scripts/power-options/reboot ;;
+s) sh ~/dotfiles/scripts/power-options/shutdown ;;
+u) sh ~/dotfiles/scripts/power-options/suspend ;;
+esac

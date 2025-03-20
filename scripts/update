@@ -1,0 +1,10 @@
+#!/bin/bash
+
+case $1 in
+a) x -Syu ;;
+s)
+  x -Sy
+  x -S $(echo $(x -Qqu | rofi -dmenu -multi-select)) 
+  ;;
+*) x -Syu --ignore linux ;;
+esac

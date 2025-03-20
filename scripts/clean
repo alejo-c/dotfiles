@@ -1,0 +1,34 @@
+#!/bin/bash
+
+sudo echo 'Cleaning...'
+
+tmp=/tmp/deletion
+
+sudo rm -fr ~/.cache/thumbnails
+sudo rm -fr ~/.cache/paru/clone
+sudo rm -fr ~/.cache/nsxiv
+sudo rm -fr ~/.cache/tldr
+sudo rm -fr ~/.cache/wal/schemes
+sudo rm -fr ~/.cache/ueberzugpp
+sudo rm -fr ~/.config/cargo/registry
+sudo rm -fr /var/log/journal/ba1e5a8f5aef4631ad4c0a0912ca2fa6 
+
+cd /home/alejo/.cache/zen/3d1ca5q0.Default\ \(beta\)/cache2/entries
+file * | grep -E 'MPEG|image' | awk -F: '{print $1}' | sed 's/ /\\ /g;s/(/\\(/g;s/)/\\)/g' > $tmp
+
+for f in $(cat $tmp); do
+  sudo rm -fr "$f"
+done
+
+rm $tmp
+
+cliphist wipe
+
+orphans=$(x -Qdtq)
+echo -e "Orphans: $orphans"
+x -Rns "$orphans"
+
+x -Scc
+
+sudo trash-list
+sudo trash-empty

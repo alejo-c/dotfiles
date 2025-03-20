@@ -1,0 +1,57 @@
+#!/bin/bash
+devices=$(lsblk -o path,label,type,mountpoint)
+removable=$(
+  echo -e "$devices" |
+    grep -P "sd.\d .*part .+$" |
+    awk '{print $1 " " $2}'
+)
+mountable=$(
+  echo -e "$devices" |
+    grep -P "sd.\d.*part $" |
+    awk '{print $1 " " $2}'
+)
+
+[ "$removable" != "" ] && options+="\nRemove"
+[ "$mountable" != "" ] && options+="\nMount\nFormat"
+[ "$options" = "" ] && exit
+
+option=$(dmenu "USB" "${options:2}")
+[ "$option" = "" ] && exit
+mountpoint=/run/media/alejo
+
+partitions=$(
+  [ "$option" = "Mount" ] &&
+    echo -e "$mountable" ||
+    echo -e "$removable"
+)
+
+device=$(echo -e "$partitions" | dmenu)
+[ "$device" = "" ] && exit
+
+path=$(echo "$device" | awk '{print $1}')
+label=$(echo "$device" | awk '{print $2}')
+
+case "$option" in
+Mount)
+  sudo bash -c " \
+    [ ! -d $mountpoint/$label ] && mkdir $mountpoint/$label
+    chown alejo:alejo $mountpoint/$label;
+    mount $path $mountpoint/$label;
+  "
+  notify-send "$label mounted on $mountpoint/$label"
+  ;;
+Remove)
+  sudo bash -c " \
+    umount $path;
+    eject ${path::-1};
+	  [ -d $mountpoint/$label ] && sudo rm -fr $mountpoint/$label;
+    sync;
+  "
+  notify-send "$label removed"
+  ;;
+Format) ;;
+Bootable) ;;
+esac
+
+# ~/dotfiles/scripts/usb-options/format
+# ~/dotfiles/scripts/usb-options/bootable

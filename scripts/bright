@@ -1,0 +1,49 @@
+#!/bin/bash
+
+step=106.5
+notification_timeout=1000
+
+function get_brightness {
+  brightnessctl | grep -Po '[0-9]{1,3}(?=%)'
+}
+
+function get_brightness_icon {
+  brightness=$(get_brightness)
+  brightness_icon="brightness-high-symbolic"
+
+  if [ "$brightness" -lt 25 ]; then
+    brightness_icon="gpm-brightness-lcd-disabled"
+  elif [ "$brightness" -lt 50 ]; then
+    brightness_icon="brightness-low-symbolic"
+  elif [ "$brightness" -lt 75 ]; then
+    brightness_icon="brightness-medium-symbolic"
+  fi
+}
+
+function show_brightness_notif {
+  brightness=$(get_brightness)
+  get_brightness_icon
+
+  notify-send -t $notification_timeout \
+    -a "brightness-app" \
+    -i "$brightness_icon" \
+    -h string:x-dunst-stack-tag:brightness_notif \
+    -h int:value:$brightness \
+    "$brightness%"
+}
+
+case "$1" in
+up) sign=+ ;;
+down) sign=- ;;
+*) brightnessctl | grep -Po '[0-9]{1,3}(?=%)'
+esac
+
+case "$2" in
+high) step=213 ;;
+low) step=53.25 ;;
+esac
+
+[ "$1" == "" ] && exit
+brightnessctl -q s "$step$sign"
+show_brightness_notif
+

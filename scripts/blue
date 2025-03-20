@@ -1,0 +1,42 @@
+#!/bin/bash
+menu='\0icon\x1fsystem-shutdown-panel'
+
+case $(bluetooth | cut -d' ' -f3) in
+off) menu="on$menu" ;;
+on)
+  connected_devices=$(bluetoothctl devices Connected)
+  paired_devices=$(bluetoothctl devices Paired)
+  devices=$(
+    echo -e "$connected_devices" |
+      cut -d' ' -f3- |
+      sort
+  )
+  menu="off$menu"$(
+    [ -n "$devices" ] &&
+      echo -e "$devices" |
+      awk '{printf "\nDisconnect %s\\0icon\\x1fbluetooth-disabled", $0}'
+  )$(
+    [ -n "$paired_devices" ] &&
+      comm -23 \
+        <(
+          echo "$paired_devices" |
+          cut -d' ' -f3- |
+            sort
+        ) \
+        <(echo "$devices") |
+        awk '{printf "\nConnect %s\\0icon\x1fbluetooth-paired", $0}'
+  )
+  ;;
+esac
+
+menu="Power $menu"
+
+option=$(dmenu ' Bluetooth: ' "$menu")
+device_name=$(echo "$option" | cut -d' ' -f2-)
+device=$(echo "$paired_devices" | grep "$device_name" | cut -d' ' -f2)
+
+case "$(echo "$option" | cut -d' ' -f1)" in
+Power) sh ~/dotfiles/scripts/bluetooth-options/toggle-power ;;
+Disconnect) bluetoothctl disconnect "$device" ;;
+Connect) bluetoothctl connect $device ;;
+esac

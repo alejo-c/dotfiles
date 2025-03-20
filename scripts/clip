@@ -1,0 +1,24 @@
+#!/bin/bash
+source ~/dotfiles/scripts/bash/functions
+config_file=~/.config/rofi/cliphist.rasi
+
+case $1 in
+list) cliphist list | f | cliphist decode | wl-copy ;;
+delete)
+  selected=$(cliphist list | rofi -dmenu -i -replace -config $config_file)
+
+  [ "$selected" = "" ] && exit
+  echo "$selected" | cliphist delete
+  clip delete
+  ;;
+wipe)
+  selected=$(dmenu 'Wipe Cliphist' 'Clear\nCancel')
+  [ "$selected" = "Clear" ] && cliphist wipe
+  ;;
+*)
+  selected=$(cliphist list | rofi -dmenu -i -replace -config $config_file -display-columns 2 -config $config_file)
+  [ "$selected" = "" ] && exit
+  echo "$selected" | cliphist decode | wl-copy
+  wl-paste
+  ;;
+esac

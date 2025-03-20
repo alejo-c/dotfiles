@@ -1,0 +1,22 @@
+#!/bin/bash
+
+file=~/dotfiles/.config/alacritty/alacritty.toml
+value=$(grep -Po '(?<=opacity = ).*' $file)
+
+case "$1" in
++|-)
+  value=$(echo "$value $1 0.05" | bc)
+
+  if echo "$value < 0" | bc -l || echo "$value > 1" | bc -l; then
+    exit
+  fi
+
+  value=$(printf '%.2f' $value)
+;;
+0) value=0.76 ;;
+*) exit ;;
+esac
+
+notify-send "Opacity: $value"
+
+sed -i "s/\(opacity = \).*/\1$value/g" $file

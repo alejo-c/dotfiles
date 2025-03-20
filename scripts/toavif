@@ -1,0 +1,5 @@
+#!/bin/bash
+
+file=$1
+name=${file%.*}
+magick "$file" -quality 70% "$name.avif"
