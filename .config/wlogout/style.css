@@ -5,22 +5,12 @@ __      _| | ___   __ _  ___  _   _| |_
  \ V  V /| | (_) | (_| | (_) | |_| | |_  
   \_/\_/ |_|\___/ \__, |\___/ \__,_|\__| 
                   |___/                  
- 
-by Stephan Raabe (2023) 
------------------------------------------------------ 
 */
 
-/* -----------------------------------------------------
- * Import Pywal colors 
- * ----------------------------------------------------- */
-@import '../../.cache/wal/colors-wlogout.css';
-
-/* -----------------------------------------------------
- * General 
- * ----------------------------------------------------- */
+@import '../../.cache/wal/colors.css';
 
 * {
-    font-family: "Fira Sans Semibold", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-family: "Fira Sans Semibold";
 	background-image: none;
 	transition: 20ms;
 	box-shadow: none;
@@ -29,69 +19,51 @@ by Stephan Raabe (2023)
 window {
 	background: url("../../.cache/blurred_wallpaper.png");
 	background-size: cover;
+	font-size: 16pt;
+	color: @foreground;
+	margin: 30px;
 }
 
 button {
-	color: #FFFFFF;
-    font-size:15px;
-
-    background-repeat: no-repeat;
-	background-position: center;
-	background-size: 20%;
-
-	border-style: solid;
-	background-color: rgba(12, 12, 12, 0.3);
-	border: 3px solid #FFFFFF;
-
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20%;
+    background-color: rgba(0, 0, 0, 0);
+    animation: gradient_f 20s ease-in infinite;
+    border-radius: 80px; /* Increased border radius for a more rounded look */
+	border:0px;
+	border-radius: 1px;
 }
 
-button:focus,
-button:active,
-button:hover {
-    color: @color11;
-	background-color: rgba(12, 12, 12, 0.5);
-	border: 3px solid @color11;
+button:focus {
+	outline: none;
+    background-color: @color11; 
+    background-size: 40%;
+    border-radius: 2px; 
+    transition: all 0.3s cubic-bezier(.55, 0.0, .28, 1.682), box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    box-shadow: 0 0 50px @color7; 
 }
 
-/* 
------------------------------------------------------ 
-Buttons
------------------------------------------------------ 
-*/
+button span {
+    font-size: 1.2em;
+}
 
 #lock {
-	margin: 10px;
-	border-radius: 20px;
-	background-image: image(url("icons/lock.png"));
+	background-image: url("icons/lock.png");
 }
 
 #logout {
-	margin: 10px;
-	border-radius: 20px;
-	background-image: image(url("icons/logout.png"));
+	background-image: url("icons/logout.png");
 }
 
 #suspend {
-	margin: 10px;
-	border-radius: 20px;
-	background-image: image(url("icons/suspend.png"));
-}
-
-#hibernate {
-	margin: 10px;
-	border-radius: 20px;
-	background-image: image(url("icons/hibernate.png"));
+	background-image: url("icons/suspend.png");
 }
 
 #shutdown {
-	margin: 10px;
-	border-radius: 20px;
-	background-image: image(url("icons/shutdown.png"));
+	background-image: url("icons/shutdown.png");
 }
 
 #reboot {
-	margin: 10px;
-	border-radius: 20px;
-	background-image: image(url("icons/reboot.png"));
+	background-image: url("icons/reboot.png");
 }

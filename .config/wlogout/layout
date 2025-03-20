@@ -1,36 +1,30 @@
 {
-    "label" : "lock",
-    "action" : "$HOME/dotfiles/scripts/power-options/lock.sh",
-    "text" : "Lock",
-    "keybind" : "l"
-}
-{
-    "label" : "hibernate",
-    "action" : "sleep 1; systemctl hibernate",
-    "text" : "Hibernate",
-    "keybind" : "h"
-}
-{
-    "label" : "logout",
-    "action" : "$HOME/dotfiles/scripts/power-options/logout.sh",
-    "text" : "Exit",
-    "keybind" : "e"
-}
-{
-    "label" : "shutdown",
-    "action" : "$HOME/dotfiles/scripts/power-options/shutdown.sh",
-    "text" : "Shutdown",
-    "keybind" : "s"
-}
-{
     "label" : "suspend",
-    "action" : "$HOME/dotfiles/scripts/power-options/suspend.sh",
+    "action" : "~/dotfiles/scripts/power u",
     "text" : "Suspend",
     "keybind" : "u"
 }
 {
+    "label" : "lock",
+    "action" : "~/dotfiles/scripts/power l",
+    "text" : "Lock",
+    "keybind" : "l"
+}
+{
+    "label" : "shutdown",
+    "action" : "~/dotfiles/scripts/power s",
+    "text" : "Shutdown",
+    "keybind" : "s"
+}
+{
+    "label" : "logout",
+    "action" : "~/dotfiles/scripts/power e",
+    "text" : "Exit",
+    "keybind" : "e"
+}
+{
     "label" : "reboot",
-    "action" : "$HOME/dotfiles/scripts/power-options/reboot.sh",
+    "action" : "~/dotfiles/scripts/power r",
     "text" : "Reboot",
     "keybind" : "r"
 }
