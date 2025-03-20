@@ -1,0 +1,4 @@
+#!/bin/bash
+
+sh ~/dotfiles/scripts/bluetooth-options/toggle-power
+systemctl suspend
