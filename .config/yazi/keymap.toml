@@ -1,0 +1,31 @@
+[manager]
+prepend_keymap = [
+  { on = '<c-s>', run = 'shell "$SHELL" --block --confirm', desc = 'Open shell here'},
+  { on = 'R', run = 'refresh', desc = 'Refresh yazi'},
+  { on = 'A', run = 'create --dir', desc = 'Create directory'},
+
+  # Seek
+  { on = 'J', run = 'seek +1', desc = 'Scroll preview down'},
+  { on = 'K', run = 'seek -1', desc = 'Scroll preview up'},
+
+  # Tabs
+  { on = '{', run = 'tab_switch --relative -1', desc = 'Tab switch previous'},
+  { on = '}', run = 'tab_switch --relative +1', desc = 'Tab switch next'},
+  { on = '[', run = 'tab_swap -1', desc = 'Tab swap previous'},
+  { on = ']', run = 'tab_swap +1', desc = 'Tab swap next'},
+
+  # Go to
+  { on = [ 'g', 'C' ], run = 'cd /home/alejo/code', desc = 'Go to code'},
+  { on = [ 'g', 'c' ], run = 'cd /home/alejo/dotfiles', desc = 'Go to dotfiles'},
+  { on = [ 'g', 'D' ], run = 'cd /home/alejo/documents', desc = 'Go to documents'},
+  { on = [ 'g', 'd' ], run = 'cd /home/alejo/downloads', desc = 'Go to downloads'},
+  { on = [ 'g', 'a' ], run = 'cd /home/alejo/audio', desc = 'Go to audio'},
+  { on = [ 'g', 'v' ], run = 'cd /home/alejo/videos', desc = 'Go to videos'},
+  { on = [ 'g', 'p' ], run = 'cd /home/alejo/pictures', desc = 'Go to pictures'},
+  { on = [ 'g', 'w' ], run = 'cd /home/alejo/pictures/wallpapers', desc = 'Go to wallpapers'},
+  { on = [ 'g', 'S' ], run = 'cd /home/alejo/pictures/screenshots', desc = 'Go to screenshots'},
+  { on = [ 'g', 's' ], run = 'cd /home/alejo/dotfiles/scripts', desc = 'Go to scripts'},
+
+  # Plugins
+  { on = 'T', run = 'plugin max-preview', desc = 'Maximize or restore preview'},
+]

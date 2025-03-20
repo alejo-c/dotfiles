@@ -1,0 +1,26 @@
+[manager]
+ratio = [1, 3, 4]
+show_hidden = true
+sort_by = "natural"
+
+[preview]
+tab_size = 2
+image_filter = "nearest"
+image_quality = 50
+
+[opener]
+edit = [
+  { run = 'vim "$@"', block = true, for = "linux" },
+  { run = 'nvim "$@"', block = true, for = "linux" },
+]
+play = [
+  { run = 'mpv "$@"', block = true, orphan = true, for = "linux" },
+]
+open = [
+  { run = 'xdg-open "$@"', orphan = true, desc = "Open" },
+]
+
+[open]
+prepend_rules = [
+  { name = "*/", use = "open" },
+]
