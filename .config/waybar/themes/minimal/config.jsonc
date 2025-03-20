@@ -9,6 +9,7 @@
 {
   "layer": "bottom",
   "position": "top",
+  //"output": "eDP-1",
   "margin-top": 0,
   "margin-bottom": 0,
   "margin-left": 0,
@@ -20,7 +21,7 @@
     "~/.config/waybar/modules.jsonc"
   ],
   "modules-left": [
-    "group/quicklinks",
+    // "group/quicklinks",
     "hyprland/workspaces",
     "hyprland/window"
   ],
@@ -28,11 +29,12 @@
     "clock"
   ],
   "modules-right": [
-    "wlr/taskbar",
-    "group/settings",
+    // "group/player",
+    // "wlr/taskbar",
+    // "group/settings",
     "tray",
     "pulseaudio",
-    "battery",
-    "backlight"
+    "battery" //,
+    // "backlight"
   ]
 }

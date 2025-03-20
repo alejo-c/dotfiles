@@ -1,20 +1,15 @@
 /*
- * __        __          _                  ____  _         _       
- * \ \      / /_ _ _   _| |__   __ _ _ __  / ___|| |_ _   _| | ___  
- *  \ \ /\ / / _` | | | | '_ \ / _` | '__| \___ \| __| | | | |/ _ \ 
- *   \ V  V / (_| | |_| | |_) | (_| | |     ___) | |_| |_| | |  __/ 
- *    \_/\_/ \__,_|\__, |_.__/ \__,_|_|    |____/ \__|\__, |_|\___| 
- *                 |___/                              |___/         
- *  
- * ----------------------------------------------------- 
+__        __          _                
+\ \      / /_ _ _   _| |__   __ _ _ __ 
+ \ \ /\ / / _` | | | | '_ \ / _` | '__|
+  \ V  V / (_| | |_| | |_) | (_| | |   
+   \_/\_/ \__,_|\__, |_.__/ \__,_|_|   
+                |___/                  
 */
 
-/* -----------------------------------------------------
- * Import Pywal colors 
- * ----------------------------------------------------- */
-@import '/home/alejo/.cache/wal/colors-waybar.css';
-@define-color background @color0;
+@import '/home/alejo/.cache/wal/colors.css';
 @define-color color @color11;
+
 
 /* -----------------------------------------------------
  * General 
@@ -27,11 +22,15 @@
   margin: 0;
   padding: 0;
   font-size: 12;
-  color: #FFFFFF;
+  color: @foreground;
 }
 
-window#waybar {
-  background-color: rgba(0, 0, 0, 0.4);
+#waybar {
+  background-color: rgba(0, 0, 0, .7);
+}
+
+#window:hover * {
+  color: #fff;
 }
 
 #window * {
@@ -58,6 +57,7 @@ window#waybar {
 
 #workspaces button.active * {
   font-weight: bolder;
+  color: #FFFFFF;
 }
 
 #workspaces button:hover {
@@ -70,8 +70,8 @@ window#waybar {
  * ----------------------------------------------------- */
 
 tooltip {
-  border-radius: 10;
-  background-color: @background;
+  border-radius: 7;
+  background-color: rgba(0, 0, 0, .85);
 }
 
 /* -----------------------------------------------------
@@ -81,20 +81,20 @@ tooltip {
 #custom-settings,
 .settings *,
 #custom-appmenuicon,
-.quicklinks * {
+.quicklinks *,
+#custom-player,
+.player *,
+#mpris {
   font-size: 17;
-  min-width: 21px;
-  /*margin: 0 3;*/
+  min-width: 23px;
 }
 
 #custom-settings {
-  margin: 0;
   margin-right: 2;
 }
 
 #custom-appmenuicon {
-  margin-right: 0;
-  margin-left: 4;
+  margin-left: 2;
 }
 
 #custom-settings:hover,
@@ -136,13 +136,21 @@ tooltip {
   margin: 0 20;
 }
 
+#clock:hover {
+  color: #FFF;
+}
+
 /* -----------------------------------------------------
  * Pulseaudio
  * ----------------------------------------------------- */
 
 #pulseaudio {
   font-weight: bold;
-  margin: 0 11 0 1;
+  margin: 0 8 0 4;
+}
+
+#pulseaudio:hover {
+  color: #FFF;
 }
 
 #pulseaudio.muted {
@@ -152,12 +160,22 @@ tooltip {
 /* -----------------------------------------------------
  * Battery
  * ----------------------------------------------------- */
+@import '/home/alejo/.config/waybar/themes/minimal/battery.css';
 
 #battery {
-  border-radius: 15;
   font-weight: bold;
-  margin: 0 4 0 0;
-  padding: 0 5;
+  margin-right: 6;
+  padding-right: 3;
+  background-position: top left;
+  background-repeat: no-repeat;
+  border-radius: 10;
+  /*
+  background-size: contain;
+  */
+}
+
+#battery:hover {
+  color: #FFF;
 }
 
 @keyframes blink {
@@ -167,17 +185,13 @@ tooltip {
   }
 }
 
-#battery.warning:not(.charging) {
-  color: #edd000;
-}
-
-#battery.critical:not(.charging) {
+#battery.010:not(.charging) {
   animation-name: blink;
   animation-duration: 0.5s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-direction: alternate;
-  color: #f53c3c;
+  color: @foreground;
 }
 
 /* -----------------------------------------------------
@@ -199,7 +213,9 @@ tooltip {
  * Tray
  * ----------------------------------------------------- */
 
-#tray {}
+#tray {
+  color: @foreground;
+}
 
 #tray>.passive {
   -gtk-icon-effect: dim;
