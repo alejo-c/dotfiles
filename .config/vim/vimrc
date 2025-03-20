@@ -1,0 +1,99 @@
+" __     ___           
+" \ \   / (_)_ __ ___  
+"  \ \ / /| | '_ ` _ \ 
+"   \ V / | | | | | | |
+"    \_/  |_|_| |_| |_|
+                                     
+colorscheme wal
+
+filetype on
+filetype plugin on
+filetype indent on
+syntax on
+
+" set nocompatible
+set ttimeoutlen=0
+set number
+set relativenumber
+set autochdir
+set autoread
+set history=100
+set hlsearch
+set ignorecase
+set incsearch
+set mouse=a
+set paste
+set showcmd
+set showmatch
+set smartcase
+set scrolloff=0
+
+set breakindent
+set expandtab
+set tabstop=2
+set shiftwidth=2
+
+set viminfo=""
+set clipboard=unnamedplus
+set fillchars+=vert:\ 
+" set nobackup
+" set nowrap
+
+" Mappings
+let mapleader=' ' 
+
+nnoremap - ^
+vnoremap - ^
+nnoremap _ g_
+vnoremap _ g_
+nnoremap <leader>a gg<s-v>G
+
+nnoremap <tab> >>
+nnoremap <s-tab> <<
+
+nnoremap <leader>n :bn<cr>
+nnoremap <leader>p :bp<cr>
+nnoremap <leader>b :e #<cr>
+nnoremap <leader>d :bd<cr>
+nnoremap <leader>o :bo<cr>
+nnoremap <leader>w :w<cr>
+nnoremap <leader>W :wa<cr>
+nnoremap <leader>q :q<cr>
+nnoremap <leader>Q :qa!<cr>
+
+nnoremap <leader>- :sp<cr>
+nnoremap <leader>\| :vsp<cr>
+
+nnoremap <leader>h <c-w>h<cr>
+nnoremap <leader>j <c-w>j<cr>
+nnoremap <leader>k <c-w>k<cr>
+nnoremap <leader>l <c-w>l<cr>
+
+" vnoremap y "+y :call system("wl-copy", @")<cr>
+" vnoremap y "+y :echo @" !wl-copy<cr>
+
+map <silent> <esc> :noh<cr>
+nnoremap <leader>r :set wrap!<cr>
+nnoremap <leader>s :set spell!<cr>
+
+nnoremap Q q
+map q <nop>
+
+augroup RestoreCursorShape
+  autocmd!
+  autocmd VimLeave * set guicursor=a:ver25-blinkon1
+augroup END
+
+" Normal mode: block cursor when entering Vim
+let &t_ti .= "\e[2 q"
+" Insert mode: beam cursor
+let &t_SI = "\e[5 q"
+" Normal mode: block cursor
+let &t_EI = "\e[2 q"
+" Replace mode: underline cursor
+let &t_SR = "\e[4 q"
+" Restore beam cursor when exiting Vim
+" let &t_te .= "\e[5 q"
+
+let skip_defaults_vim=1
+let g:netrw_banner = 0
