@@ -9,6 +9,6 @@ toggleallfloat)
   ;;
 togglefloat)
   hyprctl dispatch togglefloating
-  ~/dotfiles/hypr/scripts/window.sh center
+  sh "$0" center
   ;;
 esac
