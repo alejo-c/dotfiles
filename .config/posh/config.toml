@@ -31,6 +31,17 @@ alignment = 'left'
     cache_duration = 'none'
 
   [[blocks.segments]]
+  type = 'session'  
+  style = 'diamond'
+  background = '#c385f1'
+  foreground = '#ff5555'
+  powerline_symbol = "\ue0b0"
+  template = "{{ if .SSHSession }}{{ .UserName }}@{{ .HostName }}"
+  
+    [blocks.segments.properties]
+    cache_duration = 'none'
+
+  [[blocks.segments]]
   type = 'path'
   template = "{{ .Path  }}"
   style = 'diamond'
@@ -51,7 +62,7 @@ alignment = 'left'
   foreground = '#282a36'
 #  foreground = '#193549'
 #  foreground_templates = [ '{{ if and (gt .Ahead 0) (gt .Behind 0) }}#ffffff{{ end }}' ]
-  template = ' {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}'
+  template = ' {{ .HEAD }} {{if .BranchStatus }} {{ .BranchStatus }}{{ end }}'
   style = 'diamond'
   trailing_diamond = ""
   type = 'git'
