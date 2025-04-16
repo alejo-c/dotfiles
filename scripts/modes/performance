@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo 'source = ~/.config/hypr/conf/windows/minimal.conf' >~/.config/hypr/conf/window.conf
-echo 'source = ~/.config/hypr/conf/decorations/disabled.conf' >~/.config/hypr/conf/decoration.conf
+echo 'source = ~/.config/hypr/conf/decorations/performance.conf' >~/.config/hypr/conf/decoration.conf
 echo 'source = ~/.config/hypr/conf/animations/disabled.conf' >~/.config/hypr/conf/animation.conf
 echo '' >~/.config/hypr/plugins.conf
 hyprctl reload
