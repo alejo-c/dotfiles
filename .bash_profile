@@ -19,6 +19,8 @@ export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
 export XDG_STATE_HOME=${XDG_STATE_HOME:="$HOME/.local/state"}
 
 export HISTFILE="${XDG_STATE_HOME}"/bash/history
+export HISTSIZE=
+export HISTFILESIZE=
 export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
 
 export XCURSOR_PATH=/usr/share/icons:$XDG_DATA_HOME/icons
