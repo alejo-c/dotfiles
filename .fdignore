@@ -4,9 +4,12 @@
 .cache/fontconfig
 .cache/g-ir-scanner
 .cache/gtk-4.0/
+.cache/Hyprland Updated!
+.cache/Insync
 .cache/kitty
 .cache/mesa_shader_cache
 .cache/mesa_shader_cache_db
+.cache/mozilla
 .cache/mpv
 .cache/npm
 .cache/nvim
@@ -62,15 +65,3 @@ private
 .steam
 *target*
 .zen
-# *.avi
-# *.avif
-# *.gif
-# *.jpeg
-# *.jpg
-# *.mov
-# *.mp4
-# *.ogg
-# *.png
-# *.svg
-# *.webm
-# *.webp
