@@ -1,11 +1,11 @@
 #!/bin/bash
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-. "/home/alejo/.config/cargo/env"
+#. "$HOME/.local/share/cargo/env"
 
 #eval "$(starship init bash)"
 eval "$(oh-my-posh init bash --config ~/.config/posh/config.toml)"
 eval "$(thefuck --alias)"
 eval "$(fzf --bash)"
 eval "$(zoxide init bash)"
-cff
+clear

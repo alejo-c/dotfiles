@@ -28,6 +28,7 @@ set showmatch
 set smartcase
 set scrolloff=0
 
+set linebreak
 set breakindent
 set expandtab
 set tabstop=2

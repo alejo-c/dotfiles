@@ -10,7 +10,7 @@ alias lta='l -aTL'
 alias llt='l -lTL'
 alias llta='l -alTL'
 
-alias e='exit'
+alias q='exit'
 alias cp='cp -iv'
 alias grep='grep --color=auto'
 alias mv='mv -iv'

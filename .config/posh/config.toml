@@ -36,7 +36,8 @@ alignment = 'left'
   background = '#c385f1'
   foreground = '#ff5555'
   powerline_symbol = "\ue0b0"
-  template = "{{ if .SSHSession }}{{ .UserName }}@{{ .HostName }}"
+  #template = "{{ if .SSHSession }}{{ .UserName }}@{{ .HostName }}{{ end }}"
+  template = "{{ if .SSHSession }}{{ .UserName }}@{{ .HostName }}{{ end }}"
   
     [blocks.segments.properties]
     cache_duration = 'none'

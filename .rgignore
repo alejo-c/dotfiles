@@ -1,10 +1,32 @@
+.anthy
+.config/Valve
+.local/share/user-places*
 .anydesk
+Applications
+.cache/appstream
 .cache/BraveSoftware
 .cache/cava
+.cache/containers
+.cache/discover
+.cache/drkonqi
+.cache/event*
+.cache/.flatpak
+.cache/flatpak
 .cache/fontconfig
 .cache/g-ir-scanner
 .cache/gtk-4.0/
+.cache/ibus
+.cache/kcmshell5
+.cache/KDE
+.cache/kinfocenter
+.cache/kio_http
 .cache/kitty
+.cache/krunner
+.cache/ksmserver-logout-greeter
+.cache/ksplash
+.cache/ksy*
+.cache/kwin
+.cache/kwin
 .cache/mesa_shader_cache
 .cache/mesa_shader_cache_db
 .cache/mpv
@@ -13,8 +35,12 @@
 .cache/oh-my-posh
 .cache/paru
 .cache/pip
+.cache/plasma*
+.cache/plasmashell
 .cache/qtshadercache*
 .cache/sddm-greeter
+.cache/spectacle
+.cache/systemsettings
 .cache/tealdeer
 .cache/thumbnails
 .cache/thumnails
@@ -23,54 +49,81 @@
 .cache/vim
 .cache/vim/swap
 .cache/wal/schemes
+.cache/xdg-desktop-portal-kde
 .cache/yt-dlp
 .cache/zen
+code/build/paru
+code/build/vim
 code/rust/100*
 .config/BraveSoftware
 .config/cargo
 .config/cef_user_data
+.config/Cemu
+.config/citra-emu
+.config/dconf
+.config/EmuDeck
+.config/gamescope
+.config/gtk-3.0.bk/assets
+.config/ibus
 .config/java
+.config/KDE
+.config/kdeconnect/
+.config/kdedefaults
+.config/kde.org
 .config/npm
 .config/nvm
+.config/pegasus-frontend
 .config/pulse
+.config/rpcs3
 .config/rustup
+.config/session
+.config/steam-rom-manager
 .config/UNDERTALE
 .config/unity3d
+.confiig/libaccounts-glib
 dist/
 documents/services
+emudeck
+ES-DE
+Games
 .git/
+homebrew
 *inactive*
 .local/share/3909
+.local/share/baloo
+.local/share/containers
+.local/share/dolphin
+.local/share/flatpak
 .local/share/gnupg
 .local/share/gvfs-metadata
 .local/share/HotlineMiami2
 .local/share/hyprpm
+.local/share/ibus-table
 .local/share/icons
+.local/share/kactivitymanagerd
+.local/share/kscreen
 .local/share/mime
 .local/share/nvim
+.local/share/okular
 .local/share/onlyoffice
 .local/share/qalculate
+.local/share/RecentDocuments
+.local/share/rustup
 .local/share/Steam
 .local/share/SuperHexagon
 .local/share/Terraria
 .local/share/Trash
+.local/share/ULWGL
+.local/share/Valve*
 .local/share/vulkan
+.local/share/wireplumber
 .local/state/nvim
 node_modules/
+.pki
 private
 *__pycache__*
 .steam
+.supermodel
 *target*
+.var/app
 .zen
-# *.avi
-# *.avif
-# *.gif
-# *.jpeg
-# *.jpg
-# *.mov
-# *.mp4
-# *.ogg
-# *.png
-# *.svg
-# *.webm
-# *.webp

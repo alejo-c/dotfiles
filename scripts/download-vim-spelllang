@@ -1,0 +1,1 @@
+curl https://ftp.nluug.nl/vim/runtime/spell/$1.utf-8.spl -o ~/.config/nvim/spell/$1.utf-8.spl
