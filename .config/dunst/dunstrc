@@ -1,13 +1,9 @@
-#      _                 _    
-#   __| |_   _ _ __  ___| |_  
-#  / _` | | | | '_ \/ __| __| 
-# | (_| | |_| | | | \__ \ |_  
-#  \__,_|\__,_|_| |_|___/\__| 
-#                             
-#  
-# by Stephan Raabe (2023) 
-# ----------------------------------------------------- 
-
+#      _                 _   
+#   __| |_   _ _ __  ___| |_ 
+#  / _` | | | | '_ \/ __| __|
+# | (_| | |_| | | | \__ \ |_ 
+#  \__,_|\__,_|_| |_|___/\__|
+#
 # See dunst(5) for all configuration options
 
 [global]
@@ -27,33 +23,33 @@
     #
     # If this option is set to mouse or keyboard, the monitor option
     # will be ignored.
-    follow = none
+    follow = mouse
 
     ### Geometry ###
 
     # dynamic width from 0 to 300
     # width = (0, 300)
     # constant width of 300
-    width = 300
+    width = (70, 300)
 
     # The maximum height of a single notification, excluding the frame.
-    height = (0,300)
+    height = 300
 
     # Position the notification in the top right corner
-    origin = top-center
+    origin = top-right
 
     # Offset from the origin
-    offset = 0x5
+    offset = 3x3
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
 
     # Maximum number of notification (0 means no limit)
-    notification_limit = 20
+    notification_limit = 10
 
     ### Progress bar ###
 
-    # Turn on the progess bar. It appears when a progress hint is passed with
+    # Turn on the progress bar. It appears when a progress hint is passed with
     # for example dunstify -h int:value:12
     progress_bar = true
 
@@ -62,19 +58,19 @@
     progress_bar_height = 10
 
     # Set the frame width of the progress bar
-    progress_bar_frame_width = 1
+    progress_bar_frame_width = 0
 
     # Set the minimum width for the progress bar
-    progress_bar_min_width = 150
+    progress_bar_min_width = 0
 
     # Set the maximum width for the progress bar
-    progress_bar_max_width = 300
+    #progress_bar_max_width = 225
 
     # Corner radius for the progress bar. 0 disables rounded corners.
-    progress_bar_corner_radius = 10
+    progress_bar_corner_radius = 3
 
     # Corner radius for the icon image.
-    icon_corner_radius = 0
+    icon_corner_radius = 3
 
     # Show how many messages are currently hidden (because of
     # notification_limit).
@@ -83,35 +79,38 @@
     # The transparency of the window.  Range: [0; 100].
     # This option will only work if a compositing window manager is
     # present (e.g. xcompmgr, compiz, etc.). (X11 only)
-    transparency = 30
+    # transparency = 100
 
     # Draw a line of "separator_height" pixel height between two
     # notifications.
     # Set to 0 to disable.
     # If gap_size is greater than 0, this setting will be ignored.
-    separator_height = 2
+    separator_height = 0
 
     # Padding between text and separator.
-    padding = 8
+    padding = 5
 
     # Horizontal padding.
-    horizontal_padding = 8
+    horizontal_padding = 7
 
     # Padding between text and icon.
     text_icon_padding = 0
 
     # Defines width in pixels of frame around the notification window.
     # Set to 0 to disable.
-    frame_width = 1
+    frame_width = 0
 
     # Defines color of the frame around the notification window.
-    frame_color = "#ffffff"
+    # frame_color = "#eba0ac"
 
     # Size of gap to display between notifications - requires a compositor.
     # If value is greater than 0, separator_height will be ignored and a border
     # of size frame_width will be drawn around each notification instead.
     # Click events on gaps do not currently propagate to applications below.
-    gap_size = 0
+    gap_size = 4
+
+    background = "#030E12DF"
+    foreground = "#c4dde7"
 
     # Define a color for the separator.
     # possible values are:
@@ -119,7 +118,7 @@
     #  * foreground: use the same color as the foreground;
     #  * frame: use the same color as the frame;
     #  * anything else will be interpreted as a X color.
-    separator_color = frame
+    separator_color = auto
 
     # Sort messages by urgency.
     sort = yes
@@ -133,7 +132,7 @@
 
     ### Text ###
 
-    font = "Fira Sans Semibold" 8
+    font = "FiraCode Nerd Font" 9
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
@@ -173,7 +172,7 @@
     #   %n  progress value if set without any extra characters
     #   %%  Literal %
     # Markup is allowed
-    format = "<b>%s</b>\n%b"
+    format = "<span foreground='#298AB8'><b>%s</b></span>\n%b"
 
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
@@ -211,9 +210,8 @@
     enable_recursive_icon_lookup = true
 
     # Set icon theme (only used for recursive icon lookup)
-    icon_theme = "Papirus-Dark,Adwaita"
+    icon_theme = "Papirus"
     # You can also set multiple icon themes, with the leftmost one being used first.
-    # icon_theme = "Adwaita, breeze"
 
     # Align icons left/right/top/off
     icon_position = left
@@ -224,10 +222,11 @@
     min_icon_size = 32
 
     # Scale larger icons down to this size, set to 0 to disable
-    max_icon_size = 128
+    max_icon_size = 32
 
     # Paths to default icons (only neccesary when not using recursive icon lookup)
-    icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+	default_icon = dialog-information
+    icon_path = /usr/share/icons/Papirus-Dark/32x32/status/:/usr/share/icons/Papirus-Dark/32x32/apps/:/usr/share/icons/Papirus-Dark/32x32/categories/:/usr/share/icons/Papirus-Dark/32x32/devices/:/usr/share/icons/Papirus-Dark/32x32/emblems/:/usr/share/icons/Papirus-Dark/32x32/emotes/:/usr/share/icons/Papirus-Dark/32x32/mimetypes/:/usr/share/icons/Papirus-Dark/32x32/panel/:/usr/share/icons/Papirus-Dark/32x32/place/:/usr/share/icons/Papirus-Dark/32x32/status/
 
     ### History ###
 
@@ -241,7 +240,8 @@
     ### Misc/Advanced ###
 
     # dmenu path.
-    dmenu = /usr/bin/dmenu -p dunst:
+    dmenu = rofi -config "$HOME/.config/rofi/config-dmenu.rasi" -dmenu -p dunst:
+	#dmenu = ~/dotfiles/scripts/dunst-dmenu-wrapper
 
     # Browser for opening urls in context menu.
     browser = /usr/bin/xdg-open
@@ -260,7 +260,7 @@
     # corners.
     # The radius will be automatically lowered if it exceeds half of the
     # notification height to avoid clipping text and/or icons.
-    corner_radius = 10
+    corner_radius = 7
 
     # Ignore the dbus closeNotification message.
     # Useful to enforce the timeout set by dunst configuration. Without this
@@ -271,7 +271,7 @@
     ### Wayland ###
     # These settings are Wayland-specific. They have no effect when using X11
 
-    # Uncomment this if you want to let notications appear under fullscreen
+    # Uncomment this if you want to let notifications appear under fullscreen
     # applications (default: overlay)
     # layer = top
 
@@ -305,12 +305,12 @@
     # * context_all: Open context menu for all notifications.
     # These values can be strung together for each mouse event, and
     # will be executed in sequence.
-    mouse_left_click = close_current
-    mouse_middle_click = do_action, close_current
-    mouse_right_click = close_all
+    mouse_left_click = context, close_current
+    mouse_middle_click = close_all
+    mouse_right_click = close_current
 
 # Experimental features that may or may not work correctly. Do not expect them
-# to have a consistent behaviour across releases.
+# to have a consistent behavior across releases.
 [experimental]
     # Calculate the dpi to use on a per-monitor basis.
     # If this setting is enabled the Xft.dpi value will be ignored and instead
@@ -318,31 +318,6 @@
     # using the resolution and physical size. This might be useful in setups
     # where there are multiple screens with very different dpi values.
     per_monitor_dpi = false
-
-
-[urgency_low]
-    # IMPORTANT: colors have to be defined in quotation marks.
-    # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#000000CC"
-    foreground = "#888888"
-    timeout = 3
-    # Icon for notifications with low urgency, uncomment to enable
-    #default_icon = /path/to/icon
-
-[urgency_normal]
-    background = "#000000CC"
-    foreground = "#ffffff"
-    timeout = 4
-    # Icon for notifications with normal urgency, uncomment to enable
-    #default_icon = /path/to/icon
-
-[urgency_critical]
-    background = "#900000CC"
-    foreground = "#ffffff"
-    frame_color = "#ffffff"
-    timeout = 5
-    # Icon for notifications with critical urgency, uncomment to enable
-    #default_icon = /path/to/icon
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.
@@ -379,7 +354,7 @@
 #    alignment
 #    hide_text
 #
-# Shell-like globbing will get expanded.
+# Shell-like globing will get expanded.
 #
 # Instead of the appname filter, it's recommended to use the desktop_entry filter.
 # GLib based applications export their desktop-entry name. In comparison to the appname,
@@ -467,3 +442,32 @@
 #    set_stack_tag = "volume"
 #
 # vim: ft=cfg
+
+[urgency_critical]
+    background = "#FF4444DF"
+    foreground = "#c4dde7"
+    frame_color = "#030E12"
+	highlight = "#65B0CB"
+    timeout = 0
+
+[urgency_low]
+    frame_color = "#6591A303"
+	highlight = "#349AC5"
+    timeout = 3
+
+[urgency_normal]
+    frame_color = "#3A4A6B03"
+	highlight = "#5BB2D1"
+    timeout = 5
+
+[volume]
+    appname = volume-app
+    min_icon_size = 32
+    max_icon_size = 64
+    alignment = center
+
+[brightness]
+    appname = brightness-app
+    min_icon_size = 16
+    max_icon_size = 16
+    alignment = center
