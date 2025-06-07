@@ -5,7 +5,7 @@ size = 12.0
 family = "FiraCode Nerd Font"
 
 [window]
-opacity = 0.76
+opacity = 0.8
 #decorations = "Transparent"
 padding = { x = 5, y = 5 }
 
@@ -30,7 +30,7 @@ regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:
 
 [[hints.enabled]]
 regex = "[^ ]+\\.rs:\\d+:\\d+"
-command = { program = "code", args = [ "--goto" ] }
+command = { program = "code", args = ["--goto"] }
 mouse = { enabled = true }
 
 # [hints]
@@ -40,7 +40,4 @@ mouse = { enabled = true }
 # ]
 
 [general]
-import = [
-  "~/.cache/wal/alacritty.toml",
-  "~/.config/alacritty/keybindings.toml"
-]
+import = ["~/.cache/wal/alacritty.toml", "~/.config/alacritty/keybindings.toml"]
