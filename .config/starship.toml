@@ -1,8 +1,8 @@
 [character]
-format = "$symbol "
-success_symbol = "[❯](bold green)"
-error_symbol = "[✖](bold red)"
-vimcmd_symbol = "[❮](bold green)"
+format = "$symbol"
+success_symbol = "[❯ ](bold green)"
+error_symbol = "[✖ ](bold red)"
+vimcmd_symbol = "[❮ ](bold green)"
 
 [git_commit]
 tag_symbol = " tag "
