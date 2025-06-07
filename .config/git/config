@@ -7,7 +7,7 @@
 # Add
 	a = add
 	aa = add -A
-	ap = add -p
+	ap = add -p # Patch
 	r = reset
 	re = restore
 	rep = re -p
@@ -71,7 +71,7 @@
 	safecrlf = false
 	whitespace = trailing-space,space-before-tab
 	fsmonitor = false
-	editor = nvim
+	editor = vim
 	symlinks = true
 [apply]
 	whitespace = fix
