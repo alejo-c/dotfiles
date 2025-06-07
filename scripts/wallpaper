@@ -106,9 +106,9 @@ else
   dunstify "Creating blurred version ..." "with image '$wallname'" -h int:value:66 -h string:x-dunst-stack-tag:wallpaper
 fi
 
-extension="${wallpaper#*.}"
+is_gif=$(file $wallpaper | grep GIF) 
 
-if [ "$extension" == 'gif' ]; then
+if [ "$is_gif" ]; then
   magick "$wallpaper" "PNG32:$blurred"
   mv ~/.cache/blurred_wallpaper-0.png "$blurred"
   rm ~/.cache/blurred_wallpaper-*
