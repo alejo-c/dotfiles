@@ -69,8 +69,10 @@ nnoremap <leader>j <c-w>j<cr>
 nnoremap <leader>k <c-w>k<cr>
 nnoremap <leader>l <c-w>l<cr>
 
-" vnoremap y "+y :call system("wl-copy", @")<cr>
-" vnoremap y "+y :echo @" !wl-copy<cr>
+vnoremap y "+y :call system("wl-copy", @")<cr>
+"vnoremap y
+"+y :echo @
+" !wl-copy<cr>
 
 map <silent> <esc> :noh<cr>
 nnoremap <leader>r :set wrap!<cr>
