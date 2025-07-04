@@ -6,6 +6,7 @@ reload) killall -SIGUSR2 waybar ;;
 kill) killall -9 waybar ;;
 themes) sh ~/.config/waybar/scripts/themeswitcher.sh ;;
 *)
+  echo "// Launch Waybar"
   sh "$0" kill
   sh ~/.config/waybar/scripts/launch.sh
   ;;

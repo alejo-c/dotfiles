@@ -1,5 +1,5 @@
 [font]
-size = 12.0
+size = 11.25
 
 [font.normal]
 family = "FiraCode Nerd Font"
@@ -40,4 +40,7 @@ mouse = { enabled = true }
 # ]
 
 [general]
-import = ["~/.cache/wal/alacritty.toml", "~/.config/alacritty/keybindings.toml"]
+import = [
+  "~/.cache/wallust/alacritty.toml",
+  "~/.config/alacritty/keybindings.toml",
+]

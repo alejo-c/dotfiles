@@ -7,7 +7,7 @@ __        __          _
                 |___/                  
 */
 
-@import '/home/alejo/.cache/wal/colors.css';
+@import '/home/alejo/.cache/wal/prev/colors.css';
 @define-color color @color11;
 
 
@@ -160,7 +160,7 @@ tooltip {
 /* -----------------------------------------------------
  * Battery
  * ----------------------------------------------------- */
-@import '/home/alejo/.config/waybar/themes/minimal/battery.css';
+@import '/home/alejo/.config/waybar/themes/hypr-minimal/battery.css';
 
 #battery {
   font-weight: bold;

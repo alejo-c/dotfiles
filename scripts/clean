@@ -24,11 +24,6 @@ rm $tmp
 
 cliphist wipe
 
-orphans=$(x -Qdtq)
-echo -e "Orphans: $orphans"
-x -Rns "$orphans"
-
 x -Scc
 
-sudo trash-list
-sudo trash-empty
+trash empty .*

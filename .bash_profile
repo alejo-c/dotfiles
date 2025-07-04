@@ -9,7 +9,6 @@ export MANPAGER='less -R --use-color -Dd+r -Du+b'
 export MANROFFOPT='-P -c'
 # export GDK_BACKEND=x11
 
-export PATH="$PATH:/opt/nvim/:~/dotfiles/scripts/"
 
 # XDG Variables
 
@@ -17,6 +16,8 @@ export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
 export XDG_CACHE_HOME=${XDG_CACHE_HOME:="$HOME/.cache"}
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
 export XDG_STATE_HOME=${XDG_STATE_HOME:="$HOME/.local/state"}
+
+export PATH="$PATH:/opt/nvim/:~/dotfiles/scripts/:$XDG_DATA_HOME/cargo/bin"
 
 export HISTFILE="${XDG_STATE_HOME}"/bash/history
 export HISTSIZE=
@@ -29,12 +30,13 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc":"$XDG_CONFIG_HOME/gtk-2.0/
 export NVM_DIR="$XDG_CONFIG_HOME"/nvm
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 
-export RUSTUP_HOME="$XDG_CONFIG_HOME"/rustup
-export CARGO_HOME="$XDG_CONFIG_HOME"/cargo
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
 
 export RIPGREP_CONFIG_PATH=$XDG_CONFIG_HOME/ripgrep/config
 export BAT_THEME="base16"
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 
+export DISPLAY=:1
+
 [[ -f ~/.bashrc ]] && . ~/.bashrc
-# xrdb -load ~/.config/X11/xresources

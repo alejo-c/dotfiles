@@ -1,0 +1,232 @@
+/*
+__        __          _                
+\ \      / /_ _ _   _| |__   __ _ _ __ 
+ \ \ /\ / / _` | | | | '_ \ / _` | '__|
+  \ V  V / (_| | |_| | |_) | (_| | |   
+   \_/\_/ \__,_|\__, |_.__/ \__,_|_|   
+                |___/                  
+*/
+
+@import '/home/alejo/.cache/wallust/waybar.css';
+@define-color color @color11;
+
+
+/* -----------------------------------------------------
+ * General 
+ * ----------------------------------------------------- */
+
+* {
+  font-family: monospace;
+  border: none;
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  color: @foreground;
+}
+
+#waybar {
+  background-color: rgba(0, 0, 0, .7);
+}
+
+#window:hover * {
+  color: #fff;
+}
+
+#window * {
+  font-weight: bold;
+}
+
+/* -----------------------------------------------------
+ * Workspaces 
+ * ----------------------------------------------------- */
+
+#workspaces {
+  margin: 0 4px;
+}
+
+#workspaces button {
+  padding: 0 2px;
+  transition: all 0.3s ease-in-out;
+  border-radius: 2px;
+}
+
+#workspaces button.active {
+  background: @color;
+}
+
+#workspaces button.active * {
+  font-weight: bolder;
+  color: #FFFFFF;
+}
+
+#workspaces button:hover {
+  opacity: 0.7;
+  background: @background;
+}
+
+/* -----------------------------------------------------
+ * Tooltips
+ * ----------------------------------------------------- */
+
+tooltip {
+  border-radius: 7px;
+  background-color: rgba(0, 0, 0, .85);
+}
+
+/* -----------------------------------------------------
+ * Custom Quicklinks
+ * ----------------------------------------------------- */
+
+#custom-settings,
+.settings *,
+#custom-appmenuicon,
+.quicklinks *,
+#custom-player,
+.player *,
+#mpris {
+  font-size: 17px;
+  min-width: 23px;
+}
+
+#custom-settings {
+  margin-right: 2px;
+}
+
+#custom-appmenuicon {
+  margin-left: 2px;
+}
+
+#custom-settings:hover,
+#custom-appmenuicon:hover {
+  color: @color4;
+}
+
+.settings *:hover,
+.quicklinks *:hover {
+  color: @color;
+}
+
+#custom-exit {
+  color: #f53c3c;
+}
+
+#custom-cliphist {
+  font-weight: bold;
+}
+
+#custom-waybarthemes {
+  font-weight: lighter;
+}
+
+/* -----------------------------------------------------
+ * Idle Inhibator
+ * ----------------------------------------------------- */
+
+#idle_inhibitor.activated {
+  color: #dc2f2f;
+}
+
+/* -----------------------------------------------------
+ * Clock
+ * ----------------------------------------------------- */
+
+#clock {
+  font-weight: bold;
+  margin: 0 20px;
+}
+
+#clock:hover {
+  color: #FFF;
+}
+
+/* -----------------------------------------------------
+ * Pulseaudio
+ * ----------------------------------------------------- */
+
+#pulseaudio {
+  font-weight: bold;
+  margin: 0 8px 0 4px;
+}
+
+#pulseaudio:hover {
+  color: #FFF;
+}
+
+#pulseaudio.muted {
+  color: @color8;
+}
+
+/* -----------------------------------------------------
+ * Battery
+ * ----------------------------------------------------- */
+@import '/home/alejo/.config/waybar/themes/niri-minimal/battery.css';
+
+#battery {
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  margin-right: 6px;
+  padding-right: 3px;
+  /* background-position: top left; */
+  background-repeat: no-repeat;
+  border-radius: 10px;
+  /* background-size: contain; */
+}
+
+#battery:hover {
+  color: #FFF;
+}
+
+@keyframes blink {
+  to {
+    background-color: white;
+    color: @background;
+  }
+}
+
+#battery.010:not(.charging) {
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  color: @foreground;
+}
+
+/* -----------------------------------------------------
+ * Taskbar
+ * ----------------------------------------------------- */
+#taskbar {}
+
+#taskbar button {
+  padding: 0 2px;
+  transition: all 0.3s ease-in-out;
+  border-radius: 2px;
+}
+
+#taskbar button.active {
+  background-color: @color;
+}
+
+/* -----------------------------------------------------
+ * Tray
+ * ----------------------------------------------------- */
+
+#tray {
+  color: @foreground;
+}
+
+#tray>.passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray>.needs-attention {
+  -gtk-icon-effect: highlight;
+  background-color: #eb4d4b;
+}
+
+#backlight {
+  font-weight: bold;
+  margin-right: 11px;
+}

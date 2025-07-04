@@ -4,7 +4,5 @@
 . "$HOME/.local/share/cargo/env"
 
 eval "$(oh-my-posh init bash --config ~/.config/posh/config.toml)"
-eval "$(thefuck --alias)"
 eval "$(fzf --bash)"
 eval "$(zoxide init bash)"
-cff

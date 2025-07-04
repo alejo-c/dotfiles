@@ -19,7 +19,7 @@ pkill waybar
 # -----------------------------------------------------
 # Default theme: /THEMEFOLDER;/VARIATION
 # -----------------------------------------------------
-themestyle="/minimal;/minimal"
+themestyle="/niri-minimal;/niri-minimal"
 
 # -----------------------------------------------------
 # Get current theme information from .cache/.themestyle
@@ -35,7 +35,7 @@ IFS=';' read -ra arrThemes <<<"$themestyle"
 echo "Theme: ${arrThemes[0]}"
 
 if [ ! -f ~/.config/waybar/themes"${arrThemes[1]}"/style.css ]; then
-  themestyle="/ml4w;/ml4w/light"
+  themestyle="/hypr-minimal;/hypr-minimal"
 fi
 
 # -----------------------------------------------------

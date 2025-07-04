@@ -1,4 +1,4 @@
 #!/bin/bash
 
-st -e yazi &
+alacritty -e yazi &
 exit

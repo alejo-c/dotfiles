@@ -48,22 +48,30 @@ nnoremap _ g_
 vnoremap _ g_
 nnoremap <leader>a gg<s-v>G
 
+"" Indentations
 nnoremap <tab> >>
 nnoremap <s-tab> <<
+vnoremap <tab> >>
+vnoremap <s-tab> <<
 
+"" Buffers
 nnoremap <leader>n :bn<cr>
 nnoremap <leader>p :bp<cr>
-nnoremap <leader>b :e #<cr>
+nnoremap <leader>b :b #<cr>
 nnoremap <leader>d :bd<cr>
 nnoremap <leader>o :bo<cr>
+
+"" Files
 nnoremap <leader>w :w<cr>
 nnoremap <leader>W :wa<cr>
 nnoremap <leader>q :q<cr>
 nnoremap <leader>Q :qa!<cr>
 
+"" Splits
 nnoremap <leader>- :sp<cr>
 nnoremap <leader>\| :vsp<cr>
 
+"" Movement
 nnoremap <leader>h <c-w>h<cr>
 nnoremap <leader>j <c-w>j<cr>
 nnoremap <leader>k <c-w>k<cr>

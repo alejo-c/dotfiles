@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =9
+let g:netrw_dirhist_9='/home/alejo/code/builds/coreutils/target/release/incremental'
+let g:netrw_dirhist_8='/usr/share/bash-completion'
+let g:netrw_dirhist_7='/usr/share/bash-completion/completions'
+let g:netrw_dirhist_6='/home/alejo/dotfiles/.config/waybar/themes/niri-minimal'
+let g:netrw_dirhist_5='/home/alejo/dotfiles/.config/waybar/scripts'
+let g:netrw_dirhist_4='/home/alejo/dotfiles/.config/hypr/conf/keybindings'
+let g:netrw_dirhist_3='/home/alejo/dotfiles/.config/hypr'
+let g:netrw_dirhist_2='/home/alejo/dotfiles/.config/hypr/plugins'
+let g:netrw_dirhist_1='/home/alejo/dotfiles/.config/hypr/conf'

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+sh ~/dotfiles/scripts/init-wallpaper-engine && \
+sh ~/.config/waybar/waybar.sh && \
+wl-paste --watch cliphist store & && \
+nm-applet --indicator & && \
+blueman-applet & && \
+hypridle &

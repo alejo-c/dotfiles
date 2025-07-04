@@ -1,5 +1,5 @@
 #!/bin/bash
-devices=$(lsblk -o path,label,type,mountpoint)
+devices=$(lsblk -no path,label,type,mountpoint)
 removable=$(
   echo -e "$devices" |
     grep -P "sd.\d .*part .+$" |
@@ -10,12 +10,15 @@ mountable=$(
     grep -P "sd.\d.*part $" |
     awk '{print $1 " " $2}'
 )
-
 [ "$removable" != "" ] && options+="\nRemove"
-[ "$mountable" != "" ] && options+="\nMount\nFormat"
+[ "$mountable" != "" ] && options+="\nMount"
 [ "$options" = "" ] && exit
 
-option=$(dmenu "USB" "${options:2}")
+echo "Removable: [$removable]"
+echo "Mountable: [$mountable]"
+echo "Options: [$options]"
+
+option=$(dmenu "USB: " "${options:2}")
 [ "$option" = "" ] && exit
 mountpoint=/run/media/alejo
 
@@ -24,30 +27,42 @@ partitions=$(
     echo -e "$mountable" ||
     echo -e "$removable"
 )
+echo "Partitions: $partitions"
 
-device=$(echo -e "$partitions" | dmenu)
+device=$(dmenu "USB: " "$partitions")
 [ "$device" = "" ] && exit
 
-path=$(echo "$device" | awk '{print $1}')
-label=$(echo "$device" | awk '{print $2}')
+device_path=$(echo "$device" | awk '{print $1}')
+device_label=$(echo "$device" | awk '{print $2}')
 
 case "$option" in
 Mount)
-  sudo bash -c " \
-    [ ! -d $mountpoint/$label ] && mkdir $mountpoint/$label
-    chown alejo:alejo $mountpoint/$label;
-    mount $path $mountpoint/$label;
-  "
-  notify-send "$label mounted on $mountpoint/$label"
+  if udisksctl mount -b "$device_path" 2>/dev/null; then
+    # Get the mount point
+    mountpoint=$(lsblk -no MOUNTPOINT "$device_path" | grep -v '^$')
+
+    notify-send -i "drive-removable-media" \
+      "USB Mounted" \
+      "Device $device_label mounted at $mountpoint"
+
+    # Open file manager (optional)
+    # thunar "$mountpoint" &
+  else
+    notify-send -i "dialog-error" \
+      "Mount Failed" \
+      "Could not mount $device_label"
+  fi
   ;;
 Remove)
-  sudo bash -c " \
-    umount $path;
-    eject ${path::-1};
-	  [ -d $mountpoint/$label ] && sudo rm -fr $mountpoint/$label;
-    sync;
-  "
-  notify-send "$label removed"
+  if udisksctl unmount -b "$device_path" 2>/dev/null; then
+    notify-send -i "drive-removable-media" \
+      "USB Safely Removed" \
+      "Device $device_label unmounted and can be safely removed"
+  else
+    notify-send -i "dialog-error" \
+      "Unmount Failed" \
+      "Could not unmount $device_label (device may be busy)"
+  fi
   ;;
 Format) ;;
 Bootable) ;;

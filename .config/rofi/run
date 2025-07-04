@@ -1,7 +1,9 @@
 #!/bin/bash
+config_file='~/.config/rofi/run.rasi'
+hist=$(tail -50 ~/.local/state/bash/history | tac | awk '!seen[$0]++')
+prompt=$(echo "$hist" | rofi -dmenu -i -p "" -config $config_file)
+if [ -n "$prompt" ]; then
+    output=$(bash -c "$prompt" 2>/dev/null)
+    [ -n "$output" ] && rofi -config $config_file -e "$output"
+fi
 
-config_file=~/.config/rofi/run.rasi
-prompt=$(rofi -dmenu -p "$1" -i -replace -config $config_file)
-
-output=$(bash -c "$prompt" 2>/dev/null)
-[ "$output" != "" ] && rofi -config $config_file -e "$output"

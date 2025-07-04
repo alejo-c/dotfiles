@@ -109,8 +109,8 @@
     # Click events on gaps do not currently propagate to applications below.
     gap_size = 4
 
-    background = "#030E12DF"
-    foreground = "#c4dde7"
+    background = "#42413FDF"
+    foreground = "#FEF0BF"
 
     # Define a color for the separator.
     # possible values are:
@@ -172,7 +172,7 @@
     #   %n  progress value if set without any extra characters
     #   %%  Literal %
     # Markup is allowed
-    format = "<span foreground='#298AB8'><b>%s</b></span>\n%b"
+    format = "<span foreground='#967A5C'><b>%s</b></span>\n%b"
 
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
@@ -240,8 +240,8 @@
     ### Misc/Advanced ###
 
     # dmenu path.
-    dmenu = rofi -config "$HOME/.config/rofi/config-dmenu.rasi" -dmenu -p dunst:
-	#dmenu = ~/dotfiles/scripts/dunst-dmenu-wrapper
+    dmenu = rofi -config "$HOME/.config/rofi/dmenu.rasi" -dmenu -p Dunst
+	  #dmenu = ~/dotfiles/scripts/dunst-dmenu-wrapper
 
     # Browser for opening urls in context menu.
     browser = /usr/bin/xdg-open
@@ -445,19 +445,19 @@
 
 [urgency_critical]
     background = "#FF4444DF"
-    foreground = "#c4dde7"
-    frame_color = "#030E12"
-	highlight = "#65B0CB"
+    foreground = "#F5E29C"
+    frame_color = "#42413F"
+	highlight = "#FCD549"
     timeout = 0
 
 [urgency_low]
     frame_color = "#6591A303"
-	highlight = "#349AC5"
+	highlight = "#BB7B8D"
     timeout = 3
 
 [urgency_normal]
     frame_color = "#3A4A6B03"
-	highlight = "#5BB2D1"
+	highlight = "#FB9A62"
     timeout = 5
 
 [volume]

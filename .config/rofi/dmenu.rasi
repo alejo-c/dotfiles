@@ -1,4 +1,6 @@
-@import "~/.cache/wal/rofi.rasi"
+// @import "~/dotfiles/.settings/rofi-font.rasi"
+@import "~/.cache/wallust/rofi.rasi"
+@import "~/dotfiles/.settings/rofi-border.rasi"
 
 * {
   text-color: @foreground;

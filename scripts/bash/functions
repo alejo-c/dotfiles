@@ -18,7 +18,7 @@ f() {
     --bind 'ctrl-f:change-preview-window(down|hidden)' \
     --bind 'ctrl-b:change-preview-window(right|left)' \
     --color=16 \
-	--multi
+    --multi
 }
 
 fz() {
@@ -29,38 +29,12 @@ fz() {
     --bind 'ctrl-f:change-preview-window(down|hidden)' \
     --bind 'ctrl-b:change-preview-window(right|left)' \
     --color=16 \
-	--multi
-}
-
-rr() {
-  rg --line-number "${*:-}" |
-    fzf --ansi \
-      --delimiter : \
-      --layout reverse \
-      --preview 'bat --color=always {1} --highlight-line {2}' \
-      --preview-window 'hidden,60%,+{2}+3/3,~3' \
-      --bind 'enter:become(vi {1} +{2})' \
-      --bind 'ctrl-f:change-preview-window(down|hidden)' \
-      --color=16 \
-	  --multi
-}
-
-rrr() {
-  rg --line-number "${*:-}" |
-    fzf --ansi \
-      --delimiter : \
-      --layout reverse \
-      --preview 'bat --color=always {1} --highlight-line {2}' \
-      --preview-window 'hidden,60%,+{2}+3/3,~3' \
-      --bind 'enter:become(vv {1} +{2})' \
-      --bind 'ctrl-f:change-preview-window(down|hidden)' \
-      --color=16 \
-	  --multi
+    --multi
 }
 
 v() {
-  [[ -n "$@" ]] && \
-    files=$(echo "$@" | tr ' ' '\n') || \
+  [[ -n "$@" ]] &&
+    files=$(echo "$@" | tr ' ' '\n') ||
     files=$(fd -t f -H | sort | f)
 
   files=$(echo "$files" | awk 'system("[ -e " $0 " ] && echo " $0 " || echo no")' | grep -v ^no$ | tr '\n' ' ' | xargs)
@@ -71,15 +45,41 @@ v() {
 }
 
 vv() {
-  [[ -n "$@" ]] && \
-    files=$(echo "$@" | tr ' ' '\n') || \
+  [[ -n "$@" ]] &&
+    files=$(echo "$@" | tr ' ' '\n') ||
     files=$(fd -t f -H | sort | f)
 
   files=$(echo "$files" | awk 'system("[ -e " $0 " ] && echo " $0 " || echo no")' | grep -v ^no$ | tr '\n' ' ' | xargs)
 
   [ -z "$files" ] && return
-  vvv $files
-  realpath $files | awk '{system("echo " $0 "| wl-copy")}'
+  vvv "$files"
+  realpath "$files" | awk '{system("echo " $0 "| wl-copy")}'
+}
+
+rr() {
+  rg --line-number "${*:-}" |
+    fzf --ansi \
+      --delimiter : \
+      --layout reverse \
+      --preview 'bat --color=always {1} --highlight-line {2}' \
+      --preview-window 'hidden,60%,+{2}+3/3,~3' \
+      --bind 'enter:become(vim {1} +{2})' \
+      --bind 'ctrl-f:change-preview-window(down|hidden)' \
+      --color=16 \
+      --multi
+}
+
+rrr() {
+  rg --line-number "${*:-}" |
+    fzf --ansi \
+      --delimiter : \
+      --layout reverse \
+      --preview 'bat --color=always {1} --highlight-line {2}' \
+      --preview-window 'hidden,60%,+{2}+3/3,~3' \
+      --bind 'enter:become(vvv {1} +{2})' \
+      --bind 'ctrl-f:change-preview-window(down|hidden)' \
+      --color=16 \
+      --multi
 }
 
 zz() {

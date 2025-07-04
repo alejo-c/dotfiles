@@ -4,8 +4,8 @@ menu='\0icon\x1fsystem-shutdown-panel'
 case $(bluetooth | cut -d' ' -f3) in
 off) menu="on$menu" ;;
 on)
-  connected_devices=$(bluetoothctl devices Connected)
-  paired_devices=$(bluetoothctl devices Paired)
+  connected_devices=$(bluetoothctl devices Connected | rg -vN 'NEW|UUID')
+  paired_devices=$(bluetoothctl devices Paired | rg -vN 'NEW|UUID')
   devices=$(
     echo -e "$connected_devices" |
       cut -d' ' -f3- |

@@ -1,10 +1,32 @@
 {
-  "hyprland/workspaces": {
+  "niri/workspaces": {
     "on-click": "activate",
-    "format": "{}",
+    "format": "{icon}{value}",
     "all-outputs": true,
     "format-icons": {
-      "urgent": "",
+      "urgent": "!",
+      "active": "",
+      "default": ""
+    },
+    "persistent-workspaces": {
+      "*": 2
+    }
+  },
+  "niri/window": {
+    "rewrite": {
+      ".*(Brave)": "$1 Browser",
+      ".*(Youtube.*Zen.*)": "$1"
+    },
+    "separate-outputs": true,
+    "icon": true,
+    "icon-size": 18
+  },
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "format": "{icon}{value}",
+    "all-outputs": true,
+    "format-icons": {
+      "urgent": "!",
       "active": "",
       "default": ""
     },
@@ -81,7 +103,7 @@
     "on-click": "sh ~/.config/waybar/waybar.sh toggle",
     "tooltip-format": "Toggle Bar"
   },
-  "custom/kill": {
+  "hyprlandcustom/kill": {
     "format": "",
     "on-click": "sh ~/.config/waybar/waybar.sh kill",
     "tooltip-format": "Kill Bar"

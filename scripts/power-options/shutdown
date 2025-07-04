@@ -1,4 +1,5 @@
 #!/bin/bash
 
-sh ~/dotfiles/scripts/bluetooth-options/toggle-power
+swww kill --namespace workspaces
+swww kill --namespace overview
 systemctl poweroff

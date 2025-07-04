@@ -19,7 +19,7 @@ configuration {
 }
 
 @import "~/dotfiles/.settings/rofi-font.rasi"
-@import "~/.cache/wal/rofi.rasi"
+@import "~/.cache/wal/prev/rofi.rasi"
 @import "~/dotfiles/.settings/rofi-border.rasi"
 
 window {

@@ -1,0 +1,28 @@
+#!/bin/bash
+
+option=$(dmenu "Screen cast: " "Window\nMonitor")
+case "$option" in
+
+Window)
+  windows=$(niri msg --json windows | jq -r '.[] | "[\(.id)] \(.app_id // ""): \(.title // "")"')
+  [ -z "$windows" ] && exit
+
+  window=$(dmenu "Cast Window: " "$windows")
+  [ -z "$window" ] && exit
+
+  id="${window#[}"
+  id="${id%%]*}"
+
+  niri msg action set-dynamic-cast-window --id "$id"
+  ;;
+
+Monitor)
+  outputs=$(niri msg --json outputs | jq -r '.[] | "\(.name)"')
+  [ -z "$outputs" ] && exit
+
+  output=$(dmenu "Cast Monitor: " "$outputs")
+  [ -z "$output" ] && exit
+
+  niri msg action set-dynamic-cast-monitor "$output"
+  ;;
+esac

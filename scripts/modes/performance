@@ -1,23 +1,16 @@
 #!/bin/bash
 
-echo 'source = ~/.config/hypr/conf/windows/minimal.conf' >~/.config/hypr/conf/window.conf
-echo 'source = ~/.config/hypr/conf/decorations/performance.conf' >~/.config/hypr/conf/decoration.conf
-echo 'source = ~/.config/hypr/conf/animations/disabled.conf' >~/.config/hypr/conf/animation.conf
-echo '' >~/.config/hypr/plugins.conf
-hyprctl reload
-
 pkill -9 dunst
 pkill -9 nm-applet
 pkill -9 blueman-applet
 
-pkill -9 hyprpaper
-pkill -9 swww-daemon
+swww kill --namespace workspaces
+swww kill --namespace overview
+
 pkill -9 hypridle
 
 # pkill -9 wl-paste
 pkill -f -9 polkit-gnome-authentication-agent-1
 
 sh ~/.config/waybar/waybar.sh kill
-
-killall -e xdg-desktop-portal-hyprland
-killall -e xdg-desktop-portal
+sh ~/dotfiles/scripts/bluetooth-options/toggle-power

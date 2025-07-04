@@ -1,15 +1,5 @@
 #!/bin/bash
-
-wallpaper_engine=$(cat "$HOME"/dotfiles/.settings/wallpaper-engine)
-if [ "$wallpaper_engine" == "swww" ]; then
-  # swww
-  echo ":: Using swww"
-  swww init
-  swww-daemon --format xrgb
-elif [ "$wallpaper_engine" == "hyprpaper" ]; then
-  # hyprpaper
-  echo ":: Using hyprpaper"
-else
-  echo ":: Wallpaper Engine disabled"
-fi
+# swww-daemon -n workspaces --format xrgb &
+# swww-daemon -n overview --format xrgb &
+swww-daemon --format xrgb &
 ~/dotfiles/scripts/wallpaper init

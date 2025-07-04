@@ -1,4 +1,5 @@
 #!/bin/bash
 
-sh ~/dotfiles/scripts/bluetooth-options/toggle-power
-killall -9 Hyprland
+swww kill --namespace workspaces
+swww kill --namespace overview
+niri msg action quit --skip-confirmation

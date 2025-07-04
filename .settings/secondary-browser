@@ -1,0 +1,16 @@
+#!/bin/bash
+config_file="$HOME/.config/rofi/run.rasi"
+cache_file="$HOME/.cache/surf-history"
+
+if [ ! -f "$cache_file" ]; then
+    touch "$cache_file"
+fi
+
+cached=$(cat "$cache_file" | tac | awk '!seen[$0]++')
+url=$(echo "$cached" | rofi -dmenu -i -p "" -config "$config_file")
+
+if [ -n "$url" ]; then
+    notify-send "$url"
+    echo "$url" >> "$cache_file"
+    GDK_BACKEND=x11 surf "$url"
+fi

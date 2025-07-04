@@ -1,136 +1,95 @@
 #!/bin/bash
-#                _ _
-# __      ____ _| | |_ __   __ _ _ __   ___ _ __
-# \ \ /\ / / _` | | | '_ \ / _` | '_ \ / _ \ '__|
-#  \ V  V / (_| | | | |_) | (_| | |_) |  __/ |
-#   \_/\_/ \__,_|_|_| .__/ \__,_| .__/ \___|_|
-#                   |_|         |_|
-#
+# __        __    _ _
+# \ \      / /_ _| | |_ __   __ _ _ __   ___ _ __
+#  \ \ /\ / / _` | | | '_ \ / _` | '_ \ / _ \ '__|
+#   \ V  V / (_| | | | |_) | (_| | |_) |  __/ |
+#    \_/\_/ \__,_|_|_| .__/ \__,_| .__/ \___|_|
+#                    |_|         |_|
 # -----------------------------------------------------
+echo "// Setting wallpaper"
 
 # Cache file for holding the current wallpaper
 cache_file="$HOME/.cache/current_wallpaper"
+echo "Cache file: $cache_file"
+
 blurred="$HOME/.cache/blurred_wallpaper.png"
+echo "Blurred file: $blurred"
 
 blur="50x30"
 
 # Create cache file if not exists
 if [ ! -f "$cache_file" ]; then
   echo "$HOME/pictures/wallpapers/default.avif" >"$cache_file"
+  echo "Cache file did not existed, creating"
 fi
 
 current_wallpaper=$(cat "$cache_file")
+echo "Current wallpaper: $current_wallpaper"
+
 wallpaper="$1"
 
 case "$wallpaper" in
 # Load wallpaper from .cache of last session
 "init")
+  echo "// Using current wallpaper"
+
   if [ -f "$cache_file" ]; then
-    wal -q -i "$current_wallpaper" -o wal-set
+    wallpaper="$current_wallpaper"
   else
-    # wallpaper=$(find ~/pictures/wallpapers/ -type f \( -iname '*.avif' \) | shuf -n 1)
     wallpaper=$(find ~/pictures/wallpapers/ | shuf -n 1)
-    wal -q -i "$wallpaper" -o wal-set
   fi
   ;;
 
 # Randomly select wallpaper
 *)
-  if [ -n "$wallpaper" ]; then
-    wal -q -i "$wallpaper" -o wal-set
-  else
-
+  if [ -z "$wallpaper" ]; then
+    echo "// Random wallpaper"
     wallpaper=$current_wallpaper
-    while [[ $wallpaper == $current_wallpaper ]]; do
+
+    while [[ $wallpaper == "$current_wallpaper" ]]; do
       wallpaper=$(find ~/pictures/wallpapers/ | shuf -n 1)
     done
-
-    wal -q -i "$wallpaper" -o wal-set
   fi
   ;;
 esac
 
-# -----------------------------------------------------
-# Load current pywal color scheme
-# -----------------------------------------------------
+# Write selected wallpaper into .cache files
+echo "$wallpaper" >"$cache_file"
 
-wallpaper=$(cat ~/.cache/wal/wal)
-# source "$HOME/.cache/wal/colors.sh"
-# sed -i 's/\(active_border_color \).*/\1'"$color4/" $HOME/.config/kitty/kitty.conf
-# killall -s SIGUSR1 kitty
+# Load current color scheme
+echo "// Setting colorscheme using: $wallpaper"
 pkill -9 dunst
+wallust run "$wallpaper"
 
-echo ":: Wallpaper: $wallpaper"
-
-# -----------------------------------------------------
-# get wallpaper image name
-# -----------------------------------------------------
+# Get wallpaper image name
 wallname="${wallpaper##*/}"
 wallname="${wallname%%.*}"
 
-# -----------------------------------------------------
-# Set the new wallpaper
-# -----------------------------------------------------
+echo "// Setting wallpaper $wallpaper"
 
-wallpaper_engine=$(cat "$HOME/dotfiles/.settings/wallpaper-engine")
-if [ "$wallpaper_engine" == "swww" ]; then
-  # swww
-  echo ":: Using swww"
-  swww img "$wallpaper" \
-    --transition-bezier .43,1.19,1,.4 \
-    --transition-fps=60 \
-    --transition-type=grow \
-    --transition-duration=2 \
-    --invert-y \
-    --transition-pos "$(hyprctl cursorpos | tr -d ' ')"
-elif [ "$wallpaper_engine" == "hyprpaper" ]; then
-  # hyprpaper
-  echo ":: Using hyprpaper"
-  wal_tpl=$(cat "$HOME/dotfiles/.settings/hyprpaper.tpl")
-  output=${wal_tpl//WALLPAPER/$wallpaper}
-  echo "$output" >"$HOME/.config/hypr/hyprpaper.conf"
-  killall hyprpaper
-  hyprpaper &
-else
-  echo ":: Wallpaper Engine disabled"
-fi
+# Set the workspaces wallpaper
+# swww img -n workspaces "$wallpaper" \
+swww img "$wallpaper"
+  #--transition-type=weba \
+  #--transition-bezier .43,1.19,1,.4 \
+  #--transition-fps=60 \
+  #--invert-y
+  #--transition-duration=2 \
+#--transition-pos "$(hyprctl cursorpos | tr -d ' ')"
 
-hyprctl reload
-
-# -----------------------------------------------------
-# Created blurred wallpaper
-# -----------------------------------------------------
-if [ "$1" == "init" ]; then
-  echo ":: Init"
-else
-  dunstify "Creating blurred version ..." "with image '$wallname'" -h int:value:66 -h string:x-dunst-stack-tag:wallpaper
-fi
-
-is_gif=$(file $wallpaper | grep GIF) 
+# Create blurred wallpaper
+is_gif=$(file "$wallpaper" | grep GIF)
 
 if [ "$is_gif" ]; then
   magick "$wallpaper" "PNG32:$blurred"
   mv ~/.cache/blurred_wallpaper-0.png "$blurred"
   rm ~/.cache/blurred_wallpaper-*
+  magick "$blurred" -resize 75% -quality 50% "$blurred"
 else
   magick "$wallpaper" -resize 75% -quality 50% "$blurred"
 fi
 
 magick "$blurred" -blur "$blur" "$blurred"
 
-# -----------------------------------------------------
-# Write selected wallpaper into .cache files
-# -----------------------------------------------------
-echo "$wallpaper" >"$cache_file"
-
-# -----------------------------------------------------
-# Send notification
-# -----------------------------------------------------
-
-if [ "$1" == "init" ]; then
-  echo ":: Init"
-else
-  dunstify "Wallpaper procedure complete!" "with image '$wallname'" -h int:value:100 -h string:x-dunst-stack-tag:wallpaper
-fi
-
-dunstctl history >$HOME/.cache/dunst-history.json
+# Set the overview wallpaper
+# swww img -n overview "$blurred"

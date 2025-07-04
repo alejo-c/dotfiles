@@ -1,10 +1,11 @@
 #!/bin/bash
 mode1="Performance\0icon\x1fpower-profile-performance-symbolic"
-mode2="Riced\0icon\x1fhyprland"
+mode2="Preferred\0icon\x1fhyprland"
 
 case "$1" in
 performance) sh ~/dotfiles/scripts/modes/performance ;;
-riced) sh ~/dotfiles/scripts/modes/riced ;;
+preferred) sh ~/dotfiles/scripts/modes/preferred ;;
+slidr) sh ~/dotfiles/scripts/modes/slidr ;;
 choose)
   mode=$(dmenu " Mode: " "$mode1\n$mode2")
   mode=${mode,,}

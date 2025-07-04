@@ -1,4 +1,4 @@
-[manager]
+[mgr]
 prepend_keymap = [
   { on = '<c-s>', run = 'shell "$SHELL" --block --confirm', desc = 'Open shell here'},
   { on = 'R', run = 'refresh', desc = 'Refresh yazi'},
@@ -19,6 +19,7 @@ prepend_keymap = [
   { on = [ 'g', 'w' ], run = 'cd /home/alejo/pictures/wallpapers', desc = 'Go to wallpapers'},
   { on = [ 'g', 'S' ], run = 'cd /home/alejo/pictures/screenshots', desc = 'Go to screenshots'},
   { on = [ 'g', 's' ], run = 'cd /home/alejo/dotfiles/scripts', desc = 'Go to scripts'},
+  { on = [ 'g', 'u' ], run = 'cd /run/media/alejo', desc = 'Go to mounted devices'},
 
   # Plugins
   { on = 'T', run = 'plugin max-preview', desc = 'Maximize or restore preview'},
