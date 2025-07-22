@@ -53,6 +53,10 @@ case "$wallpaper" in
   ;;
 esac
 
+if [ "$wallpaper" == "$current_wallpaper" ]; then
+  exit
+fi
+
 # Write selected wallpaper into .cache files
 echo "$wallpaper" >"$cache_file"
 
@@ -68,8 +72,8 @@ wallname="${wallname%%.*}"
 echo "// Setting wallpaper $wallpaper"
 
 # Set the workspaces wallpaper
-# swww img -n workspaces "$wallpaper" \
 swww img "$wallpaper"
+# swww img -n workspaces "$wallpaper" \
   #--transition-type=weba \
   #--transition-bezier .43,1.19,1,.4 \
   #--transition-fps=60 \

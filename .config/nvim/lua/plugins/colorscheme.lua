@@ -2,7 +2,7 @@ return {
   {
     --"folke/tokyonight.nvim",
     "catppuccin/nvim",
-	name = "catppuccin",
+    name = "catppuccin",
     lazy = true,
     opts = {
       --transparent = "true",

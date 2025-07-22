@@ -4,9 +4,11 @@ show_hidden = true
 sort_by = "natural"
 
 [preview]
+wrap = "yes"
 tab_size = 2
-image_filter = "nearest"
-image_quality = 50
+image_delay = 100
+#image_filter = "nearest"
+image_quality = 90
 
 [opener]
 edit = [

@@ -31,7 +31,6 @@ set scrolloff=0
 set breakindent
 set expandtab
 set tabstop=2
-set shiftwidth=2
 
 set viminfo=
 set clipboard=unnamedplus

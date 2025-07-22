@@ -16,3 +16,5 @@ local keymaps = {
 for _, v in pairs(keymaps) do
   map(v[1], v[2], v[3], { noremap = false, silent = true })
 end
+
+map("n", "Q", "q", { noremap = true })

@@ -4,8 +4,7 @@ pkill -9 dunst
 pkill -9 nm-applet
 pkill -9 blueman-applet
 
-swww kill --namespace workspaces
-swww kill --namespace overview
+swww kill
 
 pkill -9 hypridle
 

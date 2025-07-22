@@ -35,6 +35,6 @@
   <property name="last-toolbar-items" type="string" value="menu:0,back:1,forward:1,open-parent:1,open-home:1,undo:0,redo:0,zoom-in:0,zoom-out:0,zoom-reset:0,view-as-icons:0,view-as-detailed-list:0,view-as-compact-list:0,toggle-split-view:0,location-bar:1,reload:0,search:1,uca-action-1714433163045793-1:1,new-tab:0,new-window:0,view-switcher:0"/>
   <property name="misc-recursive-search" type="string" value="THUNAR_RECURSIVE_SEARCH_NEVER"/>
   <property name="misc-expandable-folders" type="bool" value="false"/>
-  <property name="last-window-width" type="int" value="665"/>
-  <property name="last-window-height" type="int" value="720"/>
+  <property name="last-window-width" type="int" value="653"/>
+  <property name="last-window-height" type="int" value="704"/>
 </channel>

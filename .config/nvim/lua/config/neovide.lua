@@ -12,8 +12,8 @@ local map = vim.keymap.set
 
 -- o.guifont = "Source Code Pro:h11"
 o.guifont = "FiraCode Nerd Font:h11"
-g.neovide_opacity = 0.7
-g.transparency = 0.7
+--g.neovide_opacity = 0.7
+--g.transparency = 0.7
 -- g.neovide_background_color = "#0F161E" .. alpha()
 
 g.neovide_remember_window_size = false

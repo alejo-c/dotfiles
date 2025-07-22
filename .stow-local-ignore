@@ -2,3 +2,4 @@
 scripts
 \.settings
 \.stow-global-ignore
+\.config/vim/.netrwhist

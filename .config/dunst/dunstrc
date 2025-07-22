@@ -109,8 +109,8 @@
     # Click events on gaps do not currently propagate to applications below.
     gap_size = 4
 
-    background = "#42413FDF"
-    foreground = "#FEF0BF"
+    background = "#0B0E0E"
+    foreground = "#FBEEEF"
 
     # Define a color for the separator.
     # possible values are:
@@ -172,7 +172,7 @@
     #   %n  progress value if set without any extra characters
     #   %%  Literal %
     # Markup is allowed
-    format = "<span foreground='#967A5C'><b>%s</b></span>\n%b"
+    format = "<span foreground='#A16B6C'><b>%s</b></span>\n%b"
 
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
@@ -445,19 +445,19 @@
 
 [urgency_critical]
     background = "#FF4444DF"
-    foreground = "#F5E29C"
-    frame_color = "#42413F"
-	highlight = "#FCD549"
+    foreground = "#F1DEE0"
+    frame_color = "#363939"
+	highlight = "#F4CED1"
     timeout = 0
 
 [urgency_low]
     frame_color = "#6591A303"
-	highlight = "#BB7B8D"
+	highlight = "#817F81"
     timeout = 3
 
 [urgency_normal]
     frame_color = "#3A4A6B03"
-	highlight = "#FB9A62"
+	highlight = "#BA817C"
     timeout = 5
 
 [volume]

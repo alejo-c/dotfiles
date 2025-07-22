@@ -40,8 +40,7 @@ v() {
   files=$(echo "$files" | awk 'system("[ -e " $0 " ] && echo " $0 " || echo no")' | grep -v ^no$ | tr '\n' ' ' | xargs)
 
   [[ -z "$files" ]] && return
-  vim $files
-  realpath $files | awk '{system("echo " $0 "| wl-copy")}'
+  nvim "$files"
 }
 
 vv() {
@@ -53,7 +52,6 @@ vv() {
 
   [ -z "$files" ] && return
   vvv "$files"
-  realpath "$files" | awk '{system("echo " $0 "| wl-copy")}'
 }
 
 rr() {
@@ -63,7 +61,7 @@ rr() {
       --layout reverse \
       --preview 'bat --color=always {1} --highlight-line {2}' \
       --preview-window 'hidden,60%,+{2}+3/3,~3' \
-      --bind 'enter:become(vim {1} +{2})' \
+      --bind 'enter:become(nvim {1} +{2})' \
       --bind 'ctrl-f:change-preview-window(down|hidden)' \
       --color=16 \
       --multi
