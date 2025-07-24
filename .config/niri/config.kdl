@@ -1,0 +1,470 @@
+// NIRI configuration
+
+input {
+  keyboard {
+    xkb {
+      layout "us"
+      variant "altgr-intl"
+    }
+  }
+
+  touchpad {
+    // off
+    tap
+    dwt
+    natural-scroll
+    disabled-on-external-mouse
+  }
+
+  mouse {
+    // natural-scroll
+  }
+
+  warp-mouse-to-focus //mode="center-xy"
+  // focus-follows-mouse
+  // workspace-auto-back-and-forth
+}
+
+output "HDMI-A-1" {
+  // off
+  mode "1920x1080@74.973"
+  scale 0.95
+  position x=0 y=0
+}
+
+/-output "eDP-1" {
+  off
+  scale 1
+  transform "normal"
+  position x=1920 y=0
+}
+
+layout {
+  gaps 20
+  always-center-single-column
+  background-color "transparent"
+  default-column-width { proportion 0.5; }
+
+  preset-column-widths {
+    proportion 0.33333
+    proportion 0.5
+    proportion 0.66667
+    proportion 1.0
+  }
+
+  preset-window-heights {
+    proportion 0.33333
+    proportion 0.5
+    proportion 0.66667
+    proportion 1.0
+  }
+
+  focus-ring {
+    // off
+    width 3
+    active-gradient from="#FD5B46" to="#3BB6DE" angle=45 relative-to="workspace-view"
+    urgent-color "#9b0000"
+  }
+
+  border {
+    off
+    // active-color "#ffc87f"
+    // inactive-color "#505050"
+  }
+
+  shadow {
+    draw-behind-window true
+    softness 15 // Softness controls the shadow blur radius.
+    spread 7 // Spread expands the shadow.
+    // Offset moves the shadow relative to the window.
+    offset x=0 y=5
+    color "#0F1314BB"
+  }
+
+  tab-indicator {
+    // hide-when-single-tab
+    // place-within-column
+    gap 5
+    width 4
+    length total-proportion=1.0
+    gaps-between-tabs 2
+    corner-radius 8
+    active-color "#73514E"
+    inactive-color "#3A3D3F"
+    urgent-color "#9b0000"
+  }
+
+  insert-hint {
+    // off
+    gradient from="#D1BA9880" to="#E0D4C380" angle=45 relative-to="workspace-view"
+  }
+
+  /-struts {
+      left 10
+      right 10
+      top 3
+      bottom 3
+  }
+}
+
+spawn-at-startup "~/dotfiles/scripts/modes/preferred"
+spawn-at-startup "xwayland-satellite" ":1"
+// spawn-at-startup "xwayland-satellite" ":1" "&&" "export" "DISPLAY=:1"
+
+prefer-no-csd
+
+screenshot-path "~/pictures/screenshots/screenshot_%Y-%m-%d_%H-%M-%S.png"
+
+animations {
+    // off
+    // slowdown 3.0
+}
+
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
+/-window-rule {
+    match app-id=r#"^zen$"#
+    open-on-workspace "1"
+}
+
+window-rule {
+  match app-id=r#"^zen$"# title="^Picture-in-Picture$"
+  default-floating-position x=10 y=10 relative-to="bottom-left"
+  open-floating true
+  open-focused false
+}
+
+window-rule {
+  match app-id=r#"^blueman-manager$"#
+  open-floating true
+}
+
+window-rule {
+  geometry-corner-radius 10
+  clip-to-geometry true
+}
+
+window-rule {
+  match is-active=false
+  opacity 0.98
+}
+
+window-rule {
+  match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+  default-floating-position x=10 y=10 relative-to="bottom-right"
+}
+
+window-rule {
+  match is-window-cast-target=true
+
+  focus-ring {
+    active-color "#f38ba8"
+    inactive-color "#7d0d2d"
+  }
+
+  tab-indicator {
+    active-color "#f38ba8"
+    inactive-color "#7d0d2d"
+  }
+}
+
+/-window-rule {
+  match is-floating=true
+  baba-is-float true
+}
+
+layer-rule {
+  match namespace="^dunst$"
+  block-out-from "screencast"
+}
+
+layer-rule {
+  match namespace="^dunst$"
+  block-out-from "screen-capture"
+}
+
+layer-rule {
+  // match namespace="swww-daemonoverview"
+  match namespace="swww-daemon"
+  place-within-backdrop true
+}
+
+layer-rule {
+  match namespace="^waybar$"
+  place-within-backdrop true
+}
+
+binds {
+  Mod+Slash { show-hotkey-overlay; }
+
+  // Applications
+  Mod+U repeat=false hotkey-overlay-title="Open a Terminal: alacritty" { spawn "~/dotfiles/.settings/primary-terminal"; }
+  // Mod+Shift+U repeat=false { spawn "~/dotfiles/.settings/secondary-terminal"; }
+
+  Mod+N repeat=false { spawn "~/dotfiles/.settings/primary-browser"; }
+  Mod+Shift+N repeat=false { spawn "~/dotfiles/.settings/secondary-browser"; }
+
+  Mod+I repeat=false { spawn "~/dotfiles/.settings/primary-file-manager"; }
+  Mod+Shift+I repeat=false { spawn "~/dotfiles/.settings/secondary-file-manager"; }
+
+  Mod+Space repeat=false hotkey-overlay-title="Run an Application: rofi" { spawn "~/.config/rofi/drun"; }
+  Mod+Shift+Space repeat=false { spawn "~/.config/rofi/run"; }
+
+  Mod+Escape repeat=false hotkey-overlay-title="Power options: wlogout" { spawn "~/dotfiles/scripts/power"; }
+
+  // Waybar
+  Mod+Alt+B { spawn "bash" "-c" "sh ~/.config/waybar/waybar.sh"; }
+  Mod+B { spawn "bash" "-c" "sh ~/.config/waybar/waybar.sh toggle"; }
+  Mod+Shift+B { spawn "bash" "-c" "sh ~/.config/waybar/waybar.sh reload"; }
+  Mod+Ctrl+B { spawn "bash" "-c" "sh ~/.config/waybar/waybar.sh kill"; }
+
+  // Clipboard
+  Mod+V { spawn "~/dotfiles/scripts/clip"; }
+  Mod+Shift+V { spawn "~/dotfiles/scripts/clip" "delete"; }
+  Mod+Alt+V { spawn "~/dotfiles/scripts/clip" "wipe"; }
+
+  // Settings
+  Mod+Shift+Comma { spawn "~/dotfiles/scripts/vi"; }
+  Mod+Shift+Period { spawn "~/dotfiles/scripts/icons"; }
+
+  // Audio
+  XF86AudioRaiseVolume allow-when-locked=true { spawn "bash" "-c" "~/dotfiles/scripts/audio volume raise"; }
+  XF86AudioLowerVolume allow-when-locked=true { spawn "bash" "-c" "~/dotfiles/scripts/audio volume lower"; }
+  Mod+F3 { spawn "bash" "-c" "~/dotfiles/scripts/audio volume raise"; }
+  Mod+F2 { spawn "bash" "-c" "~/dotfiles/scripts/audio volume lower"; }
+  Mod+Right { spawn "bash" "-c" "~/dotfiles/scripts/audio volume raise"; }
+  Mod+Left { spawn "bash" "-c" "~/dotfiles/scripts/audio volume lower"; }
+
+  Ctrl+XF86AudioRaiseVolume allow-when-locked=true { spawn "bash" "-c" "~/dotfiles/scripts/audio volume raise big"; }
+  Ctrl+XF86AudioLowerVolume allow-when-locked=true { spawn "bash" "-c" "~/dotfiles/scripts/audio volume lower big"; }
+  Mod+Alt+F3 { spawn "bash" "-c" "~/dotfiles/scripts/audio volume raise big"; }
+  Mod+Alt+F2 { spawn "bash" "-c" "~/dotfiles/scripts/audio volume lower big"; }
+  Mod+Alt+Right { spawn "bash" "-c" "~/dotfiles/scripts/audio volume raise big"; }
+  Mod+Alt+Left { spawn "bash" "-c" "~/dotfiles/scripts/audio volume lower big"; }
+
+  XF86AudioMute allow-when-locked=true { spawn "bash" "-c" "~/dotfiles/scripts/audio volume"; }
+  Mod+F1 { spawn "bash" "-c" "~/dotfiles/scripts/audio volume"; }
+
+  XF86AudioPlay { spawn "bash" "-c" "~/dotfiles/scripts/audio player"; }
+  XF86AudioPause { spawn "bash" "-c" "~/dotfiles/scripts/audio player"; }
+  XF86AudioNext { spawn "bash" "-c" "~/dotfiles/scripts/audio player next"; }
+  XF86AudioPrev { spawn "bash" "-c" "~/dotfiles/scripts/audio player previous"; }
+
+  Mod+F4 { spawn "bash" "-c" "~/dotfiles/scripts/audio microphone"; }
+  Mod+Alt+BackSpace { spawn "bash" "-c" "~/dotfiles/scripts/audio sink"; }
+
+  // Brightness
+  XF86MonBrightnessDown { spawn "bash" "-c" "~/dotfiles/scripts/bright down"; }
+  XF86MonBrightnessUp { spawn "bash" "-c" "~/dotfiles/scripts/bright up"; }
+  Shift+XF86MonBrightnessDown { spawn "bash" "-c" "~/dotfiles/scripts/bright down high"; }
+  Shift+XF86MonBrightnessUp { spawn "bash" "-c" "~/dotfiles/scripts/bright up high"; }
+  Ctrl+XF86MonBrightnessDown { spawn "bash" "-c" "~/dotfiles/scripts/bright down low"; }
+  Ctrl+XF86MonBrightnessUp { spawn "bash" "-c" "~/dotfiles/scripts/bright up low"; }
+
+  Mod+F11 { spawn "bash" "-c" "~/dotfiles/scripts/bright down"; }
+  Mod+F12 { spawn "bash" "-c" "~/dotfiles/scripts/bright up"; }
+  Mod+Shift+F11 { spawn "bash" "-c" "~/dotfiles/scripts/bright down high"; }
+  Mod+Shift+F12 { spawn "bash" "-c" "~/dotfiles/scripts/bright up high"; }
+  Mod+Ctrl+F11 { spawn "bash" "-c" "~/dotfiles/scripts/bright down low"; }
+  Mod+Ctrl+F12 { spawn "bash" "-c" "~/dotfiles/scripts/bright up low"; }
+
+  Mod+Down { spawn "bash" "-c" "~/dotfiles/scripts/bright down"; }
+  Mod+Up { spawn "bash" "-c" "~/dotfiles/scripts/bright up"; }
+  Mod+Shift+Down { spawn "bash" "-c" "~/dotfiles/scripts/bright down high"; }
+  Mod+Shift+Up { spawn "bash" "-c" "~/dotfiles/scripts/bright up high"; }
+  Mod+Ctrl+Down { spawn "bash" "-c" "~/dotfiles/scripts/bright down low"; }
+  Mod+Ctrl+Up { spawn "bash" "-c" "~/dotfiles/scripts/bright up low"; }
+
+  Mod+Less { spawn "bash" "-c" "~/dotfiles/scripts/bright down low"; }
+  Mod+Shift+Less { spawn "bash" "-c" "~/dotfiles/scripts/bright up low"; }
+
+  // Actions
+  Mod+BackSpace { spawn "~/dotfiles/scripts/blue"; }
+  Mod+Shift+BackSpace { spawn "~/dotfiles/scripts/mode" "choose"; }
+  Mod+Ctrl+BackSpace { spawn "~/dotfiles/scripts/usb"; }
+  Mod+Ctrl+Shift+BackSpace { spawn "~/dotfiles/scripts/cast"; }
+
+  // Mod+W { spawn "~/dotfiles/scripts/wallpaper" "select"; }
+  Mod+Shift+W { spawn "~/dotfiles/scripts/wallpaper"; }
+
+  // Screenshots
+  Print { screenshot; }
+  Shift+Print { screenshot-window; }
+  Ctrl+Print { screenshot-screen; }
+
+  // Dunst notifications
+  Mod+D { spawn "dunstctl" "context"; }
+  Mod+X { spawn "dunstctl" "close"; }
+  Mod+Shift+X { spawn "dunstctl" "close-all"; }
+
+  // Windows (from windows.conf)
+  Mod+Q { close-window; }
+  Mod+T { toggle-window-floating; }
+  Mod+C { center-column; }
+  Mod+S { switch-preset-column-width; }
+  Mod+Shift+S { switch-preset-window-height; }
+
+  Mod+R { set-window-width "50%"; }
+  Mod+Shift+R { reset-window-height; }
+
+  Mod+F { fullscreen-window; }
+  Mod+Ctrl+F { expand-column-to-available-width; }
+  Mod+Alt+F { toggle-windowed-fullscreen; };
+
+  // Window focus movement
+  Mod+H { focus-column-left; }
+  Mod+J { focus-window-or-workspace-down; }
+  Mod+K { focus-window-or-workspace-up; }
+  Mod+L { focus-column-right; }
+
+  Alt+Tab { focus-window-previous; }
+
+  // Window movement
+  Mod+Alt+H { move-column-left; }
+  Mod+Alt+L { move-column-right; }
+  Mod+Alt+K { move-window-up; }
+  Mod+Alt+J { move-window-down; }
+
+  // Window resize
+  Mod+Ctrl+H { set-column-width "-5%"; }
+  Mod+Ctrl+L { set-column-width "+5%"; }
+  Mod+Ctrl+K { set-window-height "-5%"; }
+  Mod+Ctrl+J { set-window-height "+5%"; }
+
+  // Tabs
+  Mod+G { toggle-column-tabbed-display; }
+
+  // Workspaces
+  Mod+1 { focus-workspace 1; }
+  Mod+2 { focus-workspace 2; }
+  Mod+3 { focus-workspace 3; }
+  Mod+4 { focus-workspace 4; }
+  Mod+5 { focus-workspace 5; }
+  Mod+6 { focus-workspace 6; }
+  Mod+7 { focus-workspace 7; }
+  Mod+8 { focus-workspace 8; }
+  Mod+9 { focus-workspace 9; }
+  Mod+0 { focus-workspace 10; }
+
+  Mod+Shift+J { focus-workspace-down; }
+  Mod+Shift+K { focus-workspace-up; }
+  Mod+Tab { focus-workspace-previous; }
+
+  // Move window to workspace
+  Mod+Shift+1 { move-column-to-workspace 1; }
+  Mod+Shift+2 { move-column-to-workspace 2; }
+  Mod+Shift+3 { move-column-to-workspace 3; }
+  Mod+Shift+4 { move-column-to-workspace 4; }
+  Mod+Shift+5 { move-column-to-workspace 5; }
+  Mod+Shift+6 { move-column-to-workspace 6; }
+  Mod+Shift+7 { move-column-to-workspace 7; }
+  Mod+Shift+8 { move-column-to-workspace 8; }
+  Mod+Shift+9 { move-column-to-workspace 9; }
+  Mod+Shift+0 { move-column-to-workspace 10; }
+
+  Mod+Page_Down      { move-column-to-workspace-down; }
+  Mod+Page_Up        { move-column-to-workspace-up; }
+
+  Mod+Alt+Shift+K { move-window-to-workspace-up; }
+  Mod+Alt+Shift+J { move-window-to-workspace-down; }
+
+  // Empty workspace
+  // Mod+Grave { focus-workspace-down; }
+
+  // Existing niri bindings below...
+  Mod+O repeat=false { toggle-overview; }
+
+  Mod+Shift+H { focus-column-first; }
+  Mod+Shift+L  { focus-column-last; }
+
+  Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
+  Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
+  Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
+  Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
+  Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
+  Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
+  Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
+  Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
+
+  Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
+  Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
+
+  Mod+Shift+Page_Down { move-workspace-down; }
+  Mod+Shift+Page_Up   { move-workspace-up; }
+
+  Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
+  Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
+  Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
+  Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
+
+  Mod+WheelScrollRight      { focus-column-right; }
+  Mod+WheelScrollLeft       { focus-column-left; }
+  Mod+Ctrl+WheelScrollRight { move-column-right; }
+  Mod+Ctrl+WheelScrollLeft  { move-column-left; }
+
+  Mod+Shift+WheelScrollDown      { focus-column-right; }
+  Mod+Shift+WheelScrollUp        { focus-column-left; }
+  Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
+  Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
+
+  Mod+BracketLeft  { consume-or-expel-window-left; }
+  Mod+BracketRight { consume-or-expel-window-right; }
+
+  Mod+Comma { consume-window-into-column; }
+  Mod+Period { expel-window-from-column; }
+
+  // Mod+Ctrl+C { center-visible-columns; }
+
+  Mod+Minus { set-column-width "-10%"; }
+  Mod+Equal { set-column-width "+10%"; }
+
+  Mod+Shift+Minus { set-window-height "-10%"; }
+  Mod+Shift+Equal { set-window-height "+10%"; }
+
+  // Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+
+  Mod+Delete { quit; }
+
+  Mod+Shift+P { power-off-monitors; }
+  Mod+Ctrl+C hotkey-overlay-title=null { spawn "bash" "-c" "env DISPLAY=:0 xsel -ob | wl-copy"; }
+  Mod+Ctrl+V { spawn "bash" "-c" "wl-paste -n | env DISPLAY=:0 xsel -ib"; }
+}
+
+switch-events {}
+
+environment {
+  QT_QPA_PLATFORM "wayland"
+  _JAVA_AWT_WM_NONREPARENTING "1"
+  DISPLAY ":1"
+  ELECTRON_OZONE_PLATFORM_HINT "auto"
+}
+
+cursor {
+  xcursor-theme "Bibata-Modern-Classic"
+  xcursor-size 19
+  //hide-when-typing
+}
+
+overview {
+  workspace-shadow {
+    // off
+  }
+}
+
+hotkey-overlay {
+  skip-at-startup
+  hide-not-bound
+}
+
+xwayland-satellite {
+}
+
+gestures {
+  /-dnd-edge-view-scroll {
+    trigger-width 100
+    max-speed 3000
+  }
+
+  /-dnd-edge-workspace-switch {
+    trigger-height 100
+  }
+}

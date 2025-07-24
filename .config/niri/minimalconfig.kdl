@@ -1,0 +1,78 @@
+// Minimal Niri configuration for NixOS
+
+input {
+    keyboard {
+        xkb {
+            layout "es"
+            variant "altgr-intl"
+        }
+    }
+    
+    touchpad {
+        tap
+        natural-scroll
+    }
+    
+    mouse {
+        // Basic mouse settings
+    }
+}
+
+layout {
+    gaps 0
+    
+    // Disable focus ring
+    focus-ring {
+        off
+    }
+    
+    // Disable border
+    border {
+        off
+    }
+    
+    // Single column width preset
+    preset-column-widths {
+        proportion 1.0
+    }
+}
+
+// Startup applications
+spawn-at-startup "xwayland-satellite :1 && export DISPLAY=:1"
+
+// Minimal screenshot path
+screenshot-path null
+
+animations {
+    // Keep animations minimal
+}
+
+binds {
+    // Hotkey overlay
+    Mod+Slash repeat=false { show-hotkey-overlay; }
+    
+    // Core applications
+    Mod+T repeat=false { spawn "alacritty"; }
+    Mod+E repeat=false { spawn "thunar"; }
+    Mod+S repeat=false { spawn "~/dotfiles/.settings/secondary-browser"; }
+    
+    // Window management
+    Mod+Q { close-window; }
+    
+    // Audio controls
+    XF86AudioRaiseVolume { spawn "pactl" "set-sink-volume" "@DEFAULT_SINK@" "+5%"; }
+    XF86AudioLowerVolume { spawn "pactl" "set-sink-volume" "@DEFAULT_SINK@" "-5%"; }
+    XF86AudioMute { spawn "pactl" "set-sink-mute" "@DEFAULT_SINK@" "toggle"; }
+    
+    // Brightness controls
+    XF86MonBrightnessUp { spawn "brightnessctl" "set" "+10%"; }
+    XF86MonBrightnessDown { spawn "brightnessctl" "set" "10%-"; }
+    
+    // Exit
+    Mod+Esc { quit; }
+}
+
+
+environment {
+    // Basic environment for NixOS
+}

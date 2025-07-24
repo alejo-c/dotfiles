@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+cloudflared tunnel run --token eyJhIjoiOWM2ODk0OTU2MjU0MTAzMTk3MzMzM2Y5ZjdhODcxNmIiLCJ0IjoiMGVhMDRhMWUtNjI5MC00YTA4LThlZDktYzU1ZGJkNThlZTE0IiwicyI6Ik9UazRaall6WmpndE16azBZUzAwTjJRekxUaGtZell0TVRFM09UQmtPVEV3WmpabCJ9
