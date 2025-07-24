@@ -1,0 +1,56 @@
+# __        __    _ _           _   
+# \ \      / /_ _| | |_   _ ___| |_ 
+#  \ \ /\ / / _` | | | | | / __| __|
+#   \ V  V / (_| | | | |_| \__ \ |_ 
+#    \_/\_/ \__,_|_|_|\__,_|___/\__|
+# ----------------------------------
+
+# How the image is parse, in order to get the colors:
+# full - resized - wal - thumb -  fastresize - kmeans
+backend = "fastresize"
+
+# What color space to use to produce and select the most prominent colors:
+# lab - labmixed - lch - lchmixed
+color_space = "lch"
+
+# Use the most prominent colors in a way that makes sense, a scheme color palette:
+# dark - dark16 - darkcomp - darkcomp16
+# light - light16 - lightcomp - lightcomp16
+# harddark - harddark16 - harddarkcomp - harddarkcomp16
+# softdark - softdark16 - softdarkcomp - softdarkcomp16
+# softlight - softlight16 - softlightcomp - softlightcomp16
+palette = "dark"
+
+# Ensures a "readable contrast" (OPTIONAL, disabled by default)
+# Should only be enabled when you notice an unreadable contrast frequently happening
+# with your images. The reference color for the contrast is the background color.
+check_contrast = true
+
+# Color saturation, between [1% and 100%] (OPTIONAL, disabled by default)
+# usually something higher than 50 increases the saturation and below
+# decreases it (on a scheme with strong and vivid colors)
+# saturation = 35
+
+# Alpha value for templating, by default 100 (no other use whatsoever)
+# alpha = 100
+
+[templates]
+# zathura = { template = 'zathura', target = '~/.config/zathura/zathurarc' }
+
+# hypr.template = '~/.config/hypr/colors.conf'
+# hypr.target = '~/.cache/wallust/hypr.conf'
+
+alacritty.template = 'alacritty.toml'
+alacritty.target = '~/.cache/wallust/alacritty.toml'
+
+dunst.template = 'dunst.conf'
+dunst.target = '~/.config/dunst/dunstrc'
+
+niri.template = 'niri.kdl'
+niri.target = '~/.config/niri/config.kdl'
+
+rofi.template = 'rofi.rasi'
+rofi.target = '~/.cache/wallust/rofi.rasi'
+
+waybar.template = 'waybar.css'
+waybar.target = '~/.cache/wallust/waybar.css'
